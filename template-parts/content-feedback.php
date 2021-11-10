@@ -22,18 +22,18 @@
 	<?php
 		$profile_photo = get_the_post_thumbnail_url(get_the_ID());
 		if ($profile_photo): ?>
-		<img src="<?php echo $profile_photo ?>" alt="<?php echo the_title(); ?>" />
+		<img src="<?php echo $profile_photo ?>" alt="<?php the_title(); ?>" />
 		<?php endif;
 		
-		echo the_content();
+		the_content();
 	?>
 
 	</li>
 
-	<?php
+<?php
 
-		endwhile;
-		
+	endwhile;
+	
 	wp_reset_postdata(); 
 
 ?>

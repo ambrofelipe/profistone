@@ -53,6 +53,14 @@
 
 <?php 
 
+	include(locate_template("template-parts/content-noticias.php"));
+
+?>
+
+	<hr class="divider divider__home" />
+
+<?php
+
 	include(locate_template("template-parts/content-feedback.php"));
 	
 	include(locate_template("template-parts/contact-us.php"));

@@ -128,9 +128,10 @@ $the_query = new WP_Query( $news_args ); ?>
 				>
 			</div>
 
-			<?php if (get_the_post_thumbnail()) : ?>									 
-                <?php the_post_thumbnail(); ?>
-            <?php endif; ?>
+			<?php 
+				if (get_the_post_thumbnail())								 
+				the_post_thumbnail();
+			?>
 
 			<p>
 				<?php echo wp_trim_excerpt(); ?>
@@ -149,6 +150,8 @@ $the_query = new WP_Query( $news_args ); ?>
 </main>
 
 <?php 
+
+	include(locate_template("template-parts/content-noticias.php"));
 
 	include(locate_template("template-parts/contact-us.php"));
 

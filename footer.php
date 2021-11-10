@@ -21,11 +21,11 @@
 				<nav>
 					<span>Menus</span>
 					<ul>
-						<li><a href="/profistone/sobre/">Sobre nós</a></li>
-						<li><a href="/profistone/servicos/">Serviços</a></li>
-						<li><a href="/profistone/clientes/">Clientes</a></li>
-						<li><a href="/profistone/noticias/">Notícias</a></li>
-						<li><a href="/profistone/contactos/">Contactos</a></li>
+						<li><a href="/sobre">Sobre nós</a></li>
+						<li><a href="/servicos">Serviços</a></li>
+						<li><a href="/clientes">Clientes</a></li>
+						<li><a href="/noticias">Notícias</a></li>
+						<li><a href="/onde-estamos">Contactos</a></li>
 					</ul>
 				</nav>
 				<address>
