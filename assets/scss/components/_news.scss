@@ -68,7 +68,7 @@
 						transition: 300ms ease;
 					}
 
-					&.active {
+					&.current-menu-item {
 						color: $M-02;
 
 						&::after {
@@ -84,6 +84,14 @@
 							width: 100%;
 							transition: 300ms ease;
 						}
+					}
+				}
+
+				&.current-menu-item a {
+					color: $M-02;
+
+					&::after {
+						width: 100%;
 					}
 				}
 			}

@@ -173,14 +173,6 @@ header {
 						z-index: 2;
 					}
 
-					&.active {
-						color: $M-02;
-
-						&::after {
-							width: 100%;
-						}
-					}
-
 					&:hover {
 						color: $M-02;
 						transition: 200ms ease;
@@ -189,6 +181,14 @@ header {
 							width: 100%;
 							transition: 300ms ease;
 						}
+					}
+				}
+
+				&.current-menu-item a {
+					color: $M-02;
+
+					&::after {
+						width: 100%;
 					}
 				}
 			}

@@ -32,16 +32,30 @@
 	<div class="hero hero__internal hero--news">
 		<h1>Notícias</h1>
 	</div>
+
+	<?php
+		$categories_args = array(
+			'menu'              => "14",
+			'menu_class'        => "",
+			'menu_id'           => "",
+			'container'         => "nav",
+			'container_class'   => "news news__nav",
+			'container_id'      => "",
+			'item_spacing'      => "discard",
+		);
+
+		wp_nav_menu($categories_args);
+	?>
 	
 	<div class="news wrapper">
 <?php
 
-$args = array(
+$news_args = array(
     'post_type' => 'news',
     'posts_per_page' => 3
 );
 
-$the_query = new WP_Query( $args ); ?>
+$the_query = new WP_Query( $news_args ); ?>
 
 <?php if ( $the_query -> have_posts() ) : ?>
 

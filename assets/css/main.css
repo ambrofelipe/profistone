@@ -376,12 +376,6 @@ header nav ul.top-nav > li > a::after {
   transition: 300ms ease;
   z-index: 2;
 }
-header nav ul.top-nav > li > a.active {
-  color: #f5a794;
-}
-header nav ul.top-nav > li > a.active::after {
-  width: 100%;
-}
 header nav ul.top-nav > li > a:hover {
   color: #f5a794;
   transition: 200ms ease;
@@ -389,6 +383,12 @@ header nav ul.top-nav > li > a:hover {
 header nav ul.top-nav > li > a:hover::after {
   width: 100%;
   transition: 300ms ease;
+}
+header nav ul.top-nav > li.current-menu-item a {
+  color: #f5a794;
+}
+header nav ul.top-nav > li.current-menu-item a::after {
+  width: 100%;
 }
 @media (max-width: 991px) {
   header nav {
@@ -936,10 +936,10 @@ main .benefits ol li:nth-of-type(4)::before {
   bottom: -0.15rem;
   transition: 300ms ease;
 }
-.news__nav ul li a.active {
+.news__nav ul li a.current-menu-item {
   color: #f5a794;
 }
-.news__nav ul li a.active::after {
+.news__nav ul li a.current-menu-item::after {
   width: 100%;
 }
 .news__nav ul li a:hover {
@@ -949,6 +949,12 @@ main .benefits ol li:nth-of-type(4)::before {
 .news__nav ul li a:hover::after {
   width: 100%;
   transition: 300ms ease;
+}
+.news__nav ul li.current-menu-item a {
+  color: #f5a794;
+}
+.news__nav ul li.current-menu-item a::after {
+  width: 100%;
 }
 .news__article {
   position: relative;
