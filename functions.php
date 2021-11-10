@@ -40,4 +40,11 @@ function profistone_excerpt_more($more) {
 }
 add_filter('excerpt_more', 'profistone_excerpt_more', 999);
 
+function profistone_span_archive_news_count($links) {
+  $links = str_replace('(', '<span>', $links);
+  $links = str_replace(')', '</span>', $links);
+  return $links;
+}
+add_filter('get_archives_link', 'profistone_span_archive_news_count');
+
 ?>

@@ -33,6 +33,13 @@
 		<h1>Notícias</h1>
 	</div>
 
+	<!--
+
+		Start news categories
+
+		
+	-->
+
 	<?php
 		$categories_args = array(
 			'menu'              => "14",
@@ -46,8 +53,50 @@
 
 		wp_nav_menu($categories_args);
 	?>
+
 	
 	<div class="news wrapper">
+
+	<!--
+
+		Start search / month navigation widget
+
+
+	-->
+
+		<aside>
+			<?php get_search_form(); ?>
+
+			<span>Arquivo</span>
+
+			<nav>
+				<ul>
+					<?php
+
+						$archives_args = array(
+							'type'            => "monthly",
+							'limit'           => "3",
+							'show_post_count' => true,
+							'post_type'       => "news",
+						);
+
+						wp_get_archives($archives_args);
+
+					?>
+				</ul>
+			</nav>
+
+		</aside>
+
+
+	<!--
+
+		Start recent news
+
+
+	-->
+
+
 <?php
 
 $news_args = array(
