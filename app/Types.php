@@ -14,6 +14,7 @@ class Types {
 	public function __construct() {
 		add_action('init', array($this, 'profistone_create_services_post_type'));
 		add_action('init', array($this, 'profistone_create_news_post_type'));
+		add_action('init', array($this, 'profistone_create_feedback_post_type'));
 		add_action('admin_menu', array($this, 'profistone_remove_articles'));
 	}
 
@@ -81,6 +82,40 @@ class Types {
 				'rewrite' => array('slug' => 'noticias'),
 				'supports' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'trackbacks', 'custom-fields'),
 				'taxonomies' => array('category', 'post_tag')
+			)
+		);
+	}
+
+	/**
+	 * Add Feedback
+	 */
+	public function profistone_create_feedback_post_type() {
+		register_post_type('feedback',
+			array(
+				'labels' => array(
+					'name' => __('Feedback'),
+					'singular_name' => __('Depoimento'),
+					'add_new' => __('Adicionar novo'),
+					'add_new_item' => __('Adicionar um Depoimento'),
+					'view_item' => __('Ver Depoimentos'),
+					'edit_item' => __('Editar Depoimento'),
+					'search_items' => __('Buscar um Depoimento'),
+					'not_found' => __('Depoimento não encontrado'),
+					'not_found_in_trash' => __('Depoimento não encontrado no lixo')
+				),
+				
+				'public' => true,
+				'show_ui' => true,
+				'show_in_rest' => true,
+				'show_in_menu' => true,
+				'show_in_nav_menus' => true,
+				'show_in_admin_bar' => true,
+				'hierarchical' => false,
+				'menu_position' => 7,
+				'menu_icon' => 'dashicons-format-chat',
+				'has-archive' => true,
+				'rewrite' => array('slug' => 'feedback'),
+				'supports' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions', 'trackbacks', 'custom-fields'),
 			)
 		);
 	}

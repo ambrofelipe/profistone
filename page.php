@@ -20,6 +20,9 @@
 
 <?php
 
+	if(is_page("clientes"))
+	include(locate_template("template-parts/content-feedback.php"));
+
 	include(locate_template("template-parts/contact-us.php"));
 
 	get_footer(); 

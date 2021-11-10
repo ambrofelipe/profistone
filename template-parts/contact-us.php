@@ -1,5 +1,8 @@
 		<?php 
 			$hero_class = get_post_meta($post->ID, 'hero_class', true); 
+
+			if(is_home())
+			$hero_class = "noticias";
 		?>
 
 		<div class="dim"></div>

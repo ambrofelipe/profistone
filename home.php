@@ -148,4 +148,10 @@ $the_query = new WP_Query( $news_args ); ?>
 
 </main>
 
-<?php get_footer(); ?>
+<?php 
+
+	include(locate_template("template-parts/contact-us.php"));
+
+	get_footer(); 
+
+?>
