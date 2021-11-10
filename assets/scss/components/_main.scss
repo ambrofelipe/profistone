@@ -1,0 +1,73 @@
+@use "../abstracts" as *;
+
+main {
+	position: relative;
+	width: 100%;
+
+	section {
+		max-width: 940px;
+		margin: 0 auto;
+	}
+
+	article.main-article {
+		position: relative;
+		max-width: 940px;
+		margin: 2rem auto;
+
+		p {
+			width: 70%;
+			line-height: 1.5;
+		}
+
+		&__home {
+			p {
+				margin: 0.5rem 0 0.5rem 15rem;
+				text-align: left;
+			}
+
+			&::before {
+				@extend .mark;
+				position: absolute;
+				top: -50%;
+				left: -17%;
+				background-color: $M-01;
+			}
+		}
+
+		&__sobre {
+			h2 {
+				width: 100%;
+				margin-bottom: 3rem;
+				text-align: left;
+				text-transform: none;
+			}
+
+			p {
+				margin: 0.5rem auto 1rem 0;
+				text-align: left;
+
+				&:last-child {
+					font-weight: 100;
+					font-size: 1.5em;
+					color: $M-01;
+				}
+			}
+
+			&::before {
+				content: "";
+				display: block;
+				position: absolute;
+				top: 16%;
+				right: 0;
+				width: 15rem;
+				height: 15rem;
+				background: url(../img/ico-piggy.svg) center / cover no-repeat;
+			}
+		}
+	}
+
+	figure.clientes img {
+		display: block;
+		margin: 3rem auto;
+	}
+}

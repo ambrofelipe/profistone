@@ -1,0 +1,31 @@
+{
+	"name": "profistone",
+	"version": "1.0.0",
+	"description": "",
+	"main": "gulpfile.js",
+	"scripts": {
+		"start": "gulp",
+		"build": "gulp build",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Felipe Ambrosio",
+	"license": "ISC",
+	"devDependencies": {
+		"autoprefixer": "^10.3.6",
+		"gulp": "^4.0.2",
+		"gulp-clean": "^0.4.0",
+		"gulp-clean-css": "^4.3.0",
+		"gulp-concat": "^2.6.1",
+		"gulp-htmlmin": "^5.0.1",
+		"gulp-postcss": "^9.0.1",
+		"gulp-rev": "^9.0.0",
+		"gulp-sass": "^5.0.0",
+		"gulp-terser": "^2.1.0",
+		"postcss": "^8.3.8",
+		"rev-del": "^2.0.0",
+		"sass": "^1.42.1"
+	},
+	"dependencies": {
+		"js-cookie": "^3.0.1"
+	}
+}

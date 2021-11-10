@@ -1,0 +1,65 @@
+@use "../abstracts" as *;
+
+.feedback {
+	width: min(100%, 940px);
+	margin: 8rem auto;
+
+	ul {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+
+		margin-top: 3rem;
+
+		li {
+			width: 30%;
+
+			img {
+				display: block;
+				margin: 0 auto 4rem;
+				border-radius: 50%;
+				border: 2px solid $M-02;
+				width: 164px;
+				height: 164px;
+				object-fit: contain;
+			}
+
+			blockquote {
+				position: relative;
+				font-size: 0.75em;
+				text-align: center;
+				quotes: "“" "”" "‘" "’";
+
+				&::before {
+					content: open-quote;
+					display: block;
+					position: absolute;
+					top: -4rem;
+					width: 100%;
+					height: 1rem;
+					font-weight: 400;
+					font-size: 8em;
+					color: $M-01;
+					text-align: center;
+				}
+
+				&::after {
+					content: close-quote;
+					position: absolute;
+					width: 0;
+					height: 0;
+					visibility: hidden;
+				}
+			}
+
+			span {
+				display: block;
+				margin-top: 1rem;
+				font-weight: 700;
+				color: $M-01;
+				text-align: center;
+			}
+		}
+	}
+}

@@ -1,0 +1,322 @@
+@use "../abstracts" as *;
+
+header {
+	width: min(100%, var(--ww-00));
+	margin: 1rem auto;
+
+	address {
+		width: 100%;
+		height: 2rem;
+		border-bottom: 2px solid $M-02;
+
+		ul {
+			display: flex;
+			flex-direction: row;
+
+			li a {
+				display: inline-block;
+				height: 1.25rem;
+				background-position: left center;
+				background-size: contain;
+				background-repeat: no-repeat;
+				color: $M-01;
+				text-decoration: none;
+			}
+
+			li {
+				flex-shrink: 0;
+
+				&:nth-child(1) a {
+					background-image: url(../img/ico-call.svg);
+					margin-right: 3rem;
+					padding-left: 1.75rem;
+				}
+
+				&:nth-child(2) a {
+					background-image: url(../img/ico-mail.svg);
+					padding-left: 1.75rem;
+				}
+
+				&.instagram {
+					width: 1.25rem;
+					height: 1.25rem;
+					flex-shrink: 1;
+					margin: 0 0.5rem 0 auto;
+
+					a {
+						display: block;
+						width: 1.4rem;
+						height: 1.4rem;
+						background: url(../img/ico-instagram.svg) center /
+							cover no-repeat;
+					}
+				}
+
+				&.linkedin a {
+					width: 1.25rem;
+					height: 1.25rem;
+					background: url(../img/ico-linkedin.svg) center /
+						contain no-repeat;
+				}
+			}
+		}
+	}
+
+	nav {
+		padding: 1.5rem 0 0;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+		a.logo {
+			width: 250px;
+			height: 45px;
+			background: url(../img/logo-blue.svg) -15px center / cover no-repeat;
+		}
+
+		ul.top-nav {
+			display: inline-flex;
+			position: relative;
+			flex-direction: row;
+			align-items: flex-end;
+			justify-content: center;
+			gap: 2.5rem;
+
+			& > li {
+				position: relative;
+
+				// Serviços - dropdown
+				&:nth-child(3) {
+					// Padding for the dropdown arrow
+					padding-right: 1.125rem;
+					// Redeclaring colours to keep them on submenu hover
+					color: $M-01;
+
+					// Redeclaring pink underlining to keep it on submenu hover
+					&::before {
+						content: "";
+						display: block;
+						width: 0;
+						height: 4px;
+						border-radius: 3px;
+						background: $M-02;
+						position: absolute;
+						bottom: -0.15rem;
+						transition: 300ms ease;
+						z-index: 2;
+					}
+
+					// Dropdown arrow
+					&::after {
+						content: "";
+						display: inline-block;
+						position: absolute;
+						top: 4px;
+						right: 0;
+						width: 1rem;
+						height: 1rem;
+						background-color: $M-01;
+						mask: url(../img/ico-details.svg) center / 0.75rem
+							no-repeat;
+						transform: rotate(0deg);
+						transition: 300ms ease-in-out;
+					}
+
+					// Redeclaring pink underlining
+					&:hover::before {
+						width: 4.3125rem;
+						transition: 300ms ease;
+					}
+
+					// Redeclaring colour
+					&:hover {
+						color: $M-02;
+					}
+
+					// Dropdown arrow on hover
+					&:hover::after {
+						background: $M-02;
+						transform: rotate(180deg);
+						transition: 300ms ease-in-out;
+					}
+
+					// Submenu
+					&:hover > ul {
+						display: block;
+					}
+
+					// Redeclaring colour
+					& > a {
+						color: inherit;
+					}
+				}
+
+				& > a {
+					position: relative;
+					font-size: 0.85em;
+					color: $M-01;
+					text-decoration: none;
+					text-transform: uppercase;
+					transition: 200ms ease;
+					z-index: 2;
+
+					&::after {
+						content: "";
+						display: block;
+						width: 0;
+						height: 4px;
+						border-radius: 3px;
+						background: $M-02;
+						position: relative;
+						bottom: -0.15rem;
+						transition: 300ms ease;
+						z-index: 2;
+					}
+
+					&.active {
+						color: $M-02;
+
+						&::after {
+							width: 100%;
+						}
+					}
+
+					&:hover {
+						color: $M-02;
+						transition: 200ms ease;
+
+						&::after {
+							width: 100%;
+							transition: 300ms ease;
+						}
+					}
+				}
+			}
+		}
+
+		// Navbar on mobile
+		@media (max-width: 991px) {
+			position: relative;
+
+			&::after {
+				content: "";
+				position: absolute;
+				top: calc(50% - 2px);
+				right: 1rem;
+				width: 30px;
+				height: 4px;
+				background: $M-02;
+				box-shadow: 0 10px $M-02, 0 -10px $M-02;
+			}
+
+			ul.top-nav {
+				display: none;
+				background: $G-00;
+				flex-direction: column;
+				justify-content: center;
+				height: 100vh;
+				animation: fade 0.2s ease-out;
+
+				& > li {
+					flex: 0;
+					opacity: 0;
+					animation: enter 0.3s ease-out forwards;
+
+					@for $n from 1 through 5 {
+						&:nth-child(#{$n}) {
+							animation-delay: 0.1s * ($n - 1);
+						}
+					}
+
+					& + li {
+						margin-top: 0.75rem;
+					}
+
+					&::after {
+						left: auto;
+						right: 1rem;
+						bottom: calc(50% - 2px);
+					}
+
+					&:hover {
+						z-index: 1;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Submenu
+ul.top-nav li:nth-child(3) ul {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 16rem;
+	padding-top: 3.5rem;
+	z-index: 3;
+
+	& > li {
+		flex: 1;
+		padding: 0.5rem;
+		background-color: var(--bg-00, $G-01);
+		opacity: 0;
+		transform-origin: bottom;
+		animation: enter 0.2s ease forwards;
+
+		@for $n from 1 through 6 {
+			&:nth-child(#{$n}) {
+				animation-duration: 0.2s + 0.1s * ($n - 1);
+				animation-delay: 0.1s * ($n - 1);
+			}
+		}
+
+		& > a {
+			display: block;
+			padding: 0.625em 0.5em;
+			background-color: var(--bg-00, $G-01);
+			font-size: 0.85em;
+			color: $M-01;
+			text-decoration: none;
+			text-transform: uppercase;
+			transform: background-color 200ms ease;
+
+			&:hover {
+				background-color: $S-02;
+				transform: background-color 200ms ease;
+			}
+		}
+
+		@include mobile {
+			background: $S-02;
+		}
+	}
+
+	&:hover,
+	& > li:hover {
+		display: block;
+	}
+}
+
+@keyframes enter {
+	from {
+		opacity: 0;
+		transform: scaleY(0.98) translateY(10px);
+	}
+
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}

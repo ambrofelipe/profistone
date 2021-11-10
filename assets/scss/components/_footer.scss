@@ -1,0 +1,128 @@
+@use "../abstracts" as *;
+
+footer {
+	width: 100%;
+	background: $M-01;
+	color: $G-01;
+	padding: 4rem 0 0;
+
+	& > .wrapper {
+		display: grid;
+		grid-template-areas:
+			"lg menu address"
+			"p1 menu address"
+			"p2 menu address"
+			"p3 menu address"
+			"p4 menu address";
+		grid-template-columns: 8fr 2fr 2fr;
+		padding-bottom: 2rem;
+
+		& > a {
+			grid-area: lg;
+			display: block;
+			width: 215px;
+			height: 40px;
+			background: url(../img/logo-white.svg) -10px -20px / cover no-repeat;
+			margin-bottom: 0.5rem;
+		}
+
+		p {
+			max-width: 75ch;
+			font-size: 0.9em;
+			line-height: 1.25;
+			margin: 0.125rem 0;
+		}
+
+		p:nth-of-type(1) {
+			grid-area: p1;
+		}
+
+		p:nth-of-type(2) {
+			grid-area: p2;
+		}
+
+		p:nth-of-type(3) {
+			grid-area: p3;
+		}
+
+		p:nth-of-type(4) {
+			grid-area: p4;
+		}
+
+		nav {
+			grid-area: menu;
+			text-transform: uppercase;
+
+			span {
+				color: $G-09;
+			}
+
+			ul {
+				margin: 1.5rem 0 1rem;
+
+				li a {
+					display: block;
+					margin: 1rem 0;
+					font-size: 0.9em;
+					color: $G-01;
+					text-decoration: none;
+				}
+			}
+		}
+
+		address {
+			grid-area: address;
+
+			span {
+				color: $G-09;
+				text-transform: uppercase;
+			}
+
+			ul {
+				margin: 1.5rem 0 1rem;
+
+				li {
+					margin: 1rem 0;
+					list-style: none;
+					font-size: 0.9em;
+					color: $G-01;
+
+					a {
+						color: $G-01;
+						text-decoration: none;
+					}
+				}
+			}
+		}
+	}
+
+	.bar {
+		background: $G-09;
+		font-size: 0.9em;
+		
+		& > .wrapper {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 1.5rem 0 1.25em;
+		
+			ul li {
+				display: inline;
+				padding: 0 1rem;
+
+				&:first-child {
+					border-right: 1px solid $G-01;
+				}
+
+				&:last-child {
+					padding-right: 0;
+				}
+
+				a {
+					color: $G-01;
+					text-decoration: none;
+				}
+			}
+		}
+	}
+}

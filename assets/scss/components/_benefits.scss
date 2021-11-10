@@ -1,0 +1,51 @@
+@use "../abstracts" as *;
+
+main .benefits {
+	margin-top: 4rem;
+
+	ol {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+
+		margin: 1rem 0;
+
+		li {
+			width: 45%;
+			margin: 1.5rem 0;
+			padding: 0 4.75rem;
+			font-size: 1.25em;
+			color: $M-01;
+			text-align: center;
+
+			&:nth-of-type(2),
+			&:nth-of-type(4) {
+				padding: 0;
+			}
+
+			&::before {
+				@extend .icon;
+				margin-bottom: 1rem;
+				background-color: $M-02;
+			}
+
+			&:nth-of-type(1)::before {
+				mask: url(../img/ico-001-start.svg) center / contain no-repeat;
+			}
+
+			&:nth-of-type(2)::before {
+				mask: url(../img/ico-002-value.svg) center / contain no-repeat;
+			}
+
+			&:nth-of-type(3)::before {
+				mask: url(../img/ico-003-decision.svg) center / contain
+					no-repeat;
+			}
+
+			&:nth-of-type(4)::before {
+				mask: url(../img/ico-004-group.svg) center / contain no-repeat;
+			}
+		}
+	}
+}

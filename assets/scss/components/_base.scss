@@ -1,0 +1,54 @@
+@use "../abstracts" as *;
+
+@include font-face("Hero", "Hero-Bold", 700, normal);
+@include font-face("Hero", "Hero-Regular", 400, normal);
+@include font-face("Hero", "Hero-Light", 100, normal);
+
+// Modo diurno
+:root {
+	--bg-00: #{$G-01};
+	--fc-00: #{$G-08};
+	--ww-00: 940px;
+}
+
+// Modo noturno
+@media screen and (prefers-color-scheme: dark) {
+	:root {
+		--bg-00: #{$G-08};
+		--fc-00: #{$G-01};
+	}
+}
+
+body {
+	background-color: var(--bg-00, $G-01);
+	font-family: $F-01;
+	font-size: 16px;
+	line-height: 1.1875;
+	font-weight: 400;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+h2 {
+	width: 30ch;
+	margin: 0 auto;
+	font-size: 2em;
+	color: $M-01;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+h3 {
+	width: 30ch;
+	margin: 0 auto;
+	font-size: 1em;
+	color: $M-02;
+	text-align: center;
+}
+
+.wrapper {
+	width: min(100%, var(--ww-00));
+	margin: 0 auto;
+}

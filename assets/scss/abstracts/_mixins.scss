@@ -1,0 +1,37 @@
+@mixin font-face($font-family, $font-name, $font-weight, $font-style) {
+	@font-face {
+		font-family: $font-family;
+		src: url("../fonts/" + $font-name + ".eot");
+		src: local($font-name),
+			url("../fonts/" + $font-name + ".eot?#iefix")
+				format("embedded-opentype"),
+			url("../fonts/" + $font-name + ".woff2") format("woff2"),
+			url("../fonts/" + $font-name + ".woff") format("woff"),
+			url("../fonts/" + $font-name + ".ttf") format("truetype"),
+			url("../fonts/" + $font-name + ".svg#" + $font-name) format("svg");
+		font-weight: $font-weight;
+		font-style: $font-style;
+		font-display: swap;
+	}
+}
+
+@mixin mobile {
+	@media screen and (max-width: 991px) {
+		@content;
+	}
+}
+
+.mark {
+	content: "";
+	display: block;
+	mask: url(../img/mark.svg) center / contain no-repeat;
+	width: 450px;
+	height: 450px;
+}
+
+.icon {
+	content: "";
+	display: block;
+	height: 70px;
+	margin: 0 auto;
+}

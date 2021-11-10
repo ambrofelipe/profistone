@@ -1,0 +1,19 @@
+@use "../abstracts" as *;
+
+.instagram {
+	width: min(100%, 940px);
+	margin: 4rem 0;
+
+	ul {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: center;
+
+		margin-top: 2rem;
+
+		li {
+			margin: 2px;
+		}
+	}
+}

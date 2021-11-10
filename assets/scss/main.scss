@@ -1,0 +1,23 @@
+@use "components/reset";
+
+// base
+@use "components/base";
+
+// layout
+@use "components/header";
+@use "components/main";
+@use "components/hero";
+@use "components/benefits";
+@use "components/news";
+@use "components/feedback";
+@use "components/contactos";
+@use "components/instagram";
+@use "components/footer";
+
+// components
+@use "components/details";
+@use "components/button";
+@use "components/loading";
+@use "components/thanks";
+@use "components/rule";
+@use "components/form";

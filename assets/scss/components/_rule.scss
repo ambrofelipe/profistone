@@ -1,0 +1,65 @@
+@use "../abstracts" as *;
+
+hr.divider {
+	position: relative;
+	width: 100%;
+	height: clamp(6rem, 20vw, 25rem);
+	border: none;
+
+	&::before {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: $S-01;
+		mix-blend-mode: multiply;
+	}
+
+	&__home {
+		background: url(../img/rule-home.jpg) center / cover no-repeat;
+
+		&::after {
+			content: "desde o início";
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			font-weight: 400;
+			font-size: 3.75em;
+			color: $G-01;
+		}
+	}
+
+	&__sobre {
+		margin: 6rem 0;
+		background: url(../img/rule-sobre.jpg) center 35% / cover no-repeat;
+	}
+
+	&__servicos {
+		margin: 6rem 0;
+		background: url(../img/rule-servicos.jpg) center 35% / cover no-repeat;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: unset;
+			right: 0;
+			bottom: 40rem;
+			left: unset;
+			display: block;
+			width: 15.1rem;
+			height: 36rem;
+			background: $S-02;
+			mask: url(../img/triangle-right.svg) center/cover no-repeat;
+			mix-blend-mode: normal;
+			z-index: -1;
+		}
+	}
+}

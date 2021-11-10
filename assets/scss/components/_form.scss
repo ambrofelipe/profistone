@@ -1,0 +1,176 @@
+@use "../abstracts" as *;
+
+.contact {
+	position: relative;
+	width: 100%;
+
+	form {
+		width: min(90%, 38rem);
+		margin: 2rem auto;
+
+		label:not([for="terms"]) {
+			position: relative;
+			display: block;
+
+			&.error::after,
+			&.success::after {
+				content: "";
+				display: block;
+				position: absolute;
+				right: 1rem;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 1.25rem;
+				height: 1.25rem;
+			}
+
+			&.error {
+				input,
+				textarea {
+					border-color: $ERR;
+				}
+
+				&::after {
+					background: url(../img/ico-error.svg) center / contain
+						no-repeat;
+				}
+			}
+
+			&.success {
+				input,
+				textarea {
+					border-color: $SUC;
+				}
+
+				&::after {
+					background: url(../img/ico-success.svg) center / contain
+						no-repeat;
+				}
+			}
+
+			&[for="text"].error::after,
+			&[for="text"].success::after {
+				top: 1rem;
+				transform: none;
+			}
+		}
+
+		label[for="terms"] {
+			&.error,
+			&.error a {
+				color: $ERR;
+			}
+
+			&.success,
+			&.success a {
+				color: $SUC;
+			}
+		}
+
+		input,
+		textarea {
+			display: block;
+			width: 100%;
+			border: 1px solid $G-03;
+			border-radius: 1rem;
+			margin: 1rem 0;
+			padding: 0.5rem 2rem;
+			font-family: $F-01;
+			font-size: 0.75em;
+
+			&::placeholder {
+				color: $M-01;
+			}
+		}
+
+		textarea {
+			height: 6rem;
+		}
+
+		label[for="terms"] {
+			position: relative;
+			left: 5px;
+			font-size: 0.9em;
+
+			a {
+				color: $M-01;
+			}
+		}
+
+		input[type="checkbox"] {
+			display: inline;
+			width: auto;
+			margin-left: 2rem;
+		}
+
+		button {
+			float: right;
+			margin: 0.25rem 0 0 0;
+			font-weight: 400;
+			font-size: 1em;
+			text-transform: none;
+		}
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		bottom: 2rem;
+		left: 0;
+		display: block;
+		width: 15.1rem;
+		height: 36rem;
+		background: url(../img/triangle-right.svg) center/cover no-repeat;
+		transform: rotate(180deg);
+		opacity: 0.2;
+		z-index: -1;
+	}
+
+	&__sobre::after {
+		transform: none;
+		left: unset;
+		bottom: 10rem;
+		right: 0;
+		background: $S-02;
+		mask: url(../img/triangle-right.svg) center/cover no-repeat;
+		opacity: 1;
+	}
+
+	&__clientes::before {
+		content: "";
+		position: absolute;
+		bottom: 42rem;
+		left: 0;
+		display: block;
+		width: 15.1rem;
+		height: 36rem;
+		background: $M-01;
+		mask: url(../img/triangle-right.svg) center/cover no-repeat;
+		transform: rotate(180deg);
+		z-index: 2;
+	}
+
+	&__clientes::after {
+		transform: none;
+		left: unset;
+		bottom: 7rem;
+		right: 0;
+		background: $S-01;
+		mask: url(../img/triangle-right.svg) center/cover no-repeat;
+		opacity: 1;
+	}
+
+	&__contactos::after {
+		transform: none;
+		left: unset;
+		bottom: -4rem;
+		right: 0;
+		background: $S-02;
+		mask: url(../img/triangle-right.svg) center/cover no-repeat;
+		opacity: 1;
+	}
+
+	&__noticias::after {
+		display: none;
+	}
+}

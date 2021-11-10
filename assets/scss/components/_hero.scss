@@ -1,0 +1,236 @@
+@use "../abstracts" as *;
+
+main .hero {
+	width: 100%;
+	min-height: 45rem;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	clip-path: url(#hero-path);
+
+	&__home {
+		position: relative;
+		background-image: url(../img/hero-home.jpg);
+
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+
+		h1 {
+			position: relative;
+			width: 55%;
+			margin-top: -12rem;
+			font-weight: 100;
+			font-size: 2.5em;
+			color: $M-01;
+			line-height: 1.5;
+
+			span {
+				display: block;
+				background: $M-01;
+				padding: 0 0.5rem;
+				font-weight: 700;
+				font-size: 1.1em;
+				color: $G-00;
+				line-height: 1;
+			}
+
+			&::before {
+				@extend .mark;
+				position: absolute;
+				left: -27.5rem;
+				top: -9rem;
+				background-color: $M-02;
+			}
+		}
+
+		.mouse {
+			position: absolute;
+			right: 50%;
+			bottom: 5rem;
+			width: 2rem;
+			height: 3.5rem;
+			border: 2px solid $G-01;
+			border-radius: 2rem;
+
+			.scroll {
+				width: 3px;
+				height: 10px;
+				margin: 0.25rem auto;
+				border-radius: 25%;
+				background-color: $G-01;
+				animation-name: scroll;
+				animation-duration: 2s;
+				animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
+				animation-iteration-count: infinite;
+			}
+		}
+	}
+
+	&__internal {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		h1 {
+			position: relative;
+			width: 35rem;
+			font-weight: 400;
+			font-size: 4em;
+			color: $G-00;
+			line-height: 1.5;
+			text-align: center;
+
+			&::before {
+				@extend .mark;
+				position: absolute;
+				left: -15rem;
+				top: -8rem;
+				width: 350px;
+				height: 350px;
+			}
+		}
+
+		&::before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: $S-01;
+			mix-blend-mode: multiply;
+		}
+	}
+
+	&--sobre {
+		background-image: url(../img/hero-sobre.jpg);
+
+		h1 {
+			width: 27.5rem;
+
+			&::before {
+				background-color: $M-02;
+			}
+		}
+	}
+
+	&--clientes {
+		background-image: url(../img/hero-clientes.jpg);
+
+		h1 {
+			width: 25rem;
+
+			&::before {
+				background-color: $G-00;
+			}
+		}
+	}
+
+	&--contactos {
+		background-image: url(../img/hero-contactos.jpg);
+
+		h1::before {
+			background-color: $G-00;
+		}
+	}
+
+	&--news {
+		background-image: url(../img/hero-noticias.jpg);
+
+		h1 {
+			width: 25rem;
+
+			&::before {
+				background-color: $G-00;
+			}
+		}
+	}
+
+	&--contabilidade {
+		background-image: url(../img/hero-contabilidade.jpg);
+
+		h1 {
+			width: 60rem;
+
+			&::before {
+				background-color: $G-00;
+			}
+		}
+	}
+
+	&--formacao {
+		background-image: url(../img/hero-formacao.jpg);
+
+		h1 {
+			width: 25rem;
+
+			&::before {
+				background-color: $G-00;
+			}
+		}
+	}
+
+	&--rh {
+		background-image: url(../img/hero-rh.jpg);
+
+		h1 {
+			width: 40rem;
+
+			&::before {
+				background-color: $G-00;
+			}
+		}
+	}
+
+	&--gestao {
+		background-image: url(../img/hero-gestao.jpg);
+
+		h1 {
+			width: 40rem;
+
+			&::before {
+				background-color: $G-00;
+			}
+		}
+	}
+
+	&--empreendedor {
+		background-image: url(../img/hero-empreendedor.jpg);
+
+		h1 {
+			width: 60rem;
+
+			&::before {
+				background-color: $G-00;
+			}
+		}
+	}
+
+	&--representacao {
+		background-image: url(../img/hero-representacao.jpg);
+
+		h1 {
+			width: 40rem;
+
+			&::before {
+				background-color: $G-00;
+			}
+		}
+	}
+}
+
+@keyframes scroll {
+	0% {
+		opacity: 0;
+	}
+	10% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(15px);
+		opacity: 0;
+	}
+}
