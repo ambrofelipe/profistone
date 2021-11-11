@@ -103,27 +103,6 @@
 			<?php the_content(); ?>
 		
 		</article>
-	
-	<!--
-
-		Start news categories
-
-		
-	-->
-
-	<?php
-		$categories_args = array(
-			'menu'              => "14",
-			'menu_class'        => "",
-			'menu_id'           => "",
-			'container'         => "nav",
-			'container_class'   => "news news__nav",
-			'container_id'      => "",
-			'item_spacing'      => "discard",
-		);
-
-		wp_nav_menu($categories_args);
-	?>
 
 	<!--
 
@@ -159,6 +138,27 @@
 		</li>
 	</ul>
 </nav>
+
+<!--
+
+	Start news categories
+
+	
+-->
+
+<?php
+	$categories_args = array(
+		'menu'              => "14",
+		'menu_class'        => "",
+		'menu_id'           => "",
+		'container'         => "nav",
+		'container_class'   => "news news__nav",
+		'container_id'      => "",
+		'item_spacing'      => "discard",
+	);
+
+	wp_nav_menu($categories_args);
+?>
 
 </div>
 

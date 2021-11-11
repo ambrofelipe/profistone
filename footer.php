@@ -20,13 +20,19 @@
 				</p>
 				<nav>
 					<span>Menus</span>
-					<ul>
-						<li><a href="/sobre">Sobre nós</a></li>
-						<li><a href="/servicos">Serviços</a></li>
-						<li><a href="/clientes">Clientes</a></li>
-						<li><a href="/noticias">Notícias</a></li>
-						<li><a href="/onde-estamos">Contactos</a></li>
-					</ul>
+					<?php
+						$legal_args = array(
+							'menu'              => "15",
+							'menu_class'        => "",
+							'menu_id'           => "",
+							'container'         => "",
+							'container_class'   => "",
+							'container_id'      => "",
+							'item_spacing'      => "discard",
+						);
+
+						wp_nav_menu($legal_args);
+					?>
 				</nav>
 				<address>
 					<span>Contactos</span>
@@ -55,10 +61,20 @@
 						>Profistone &copy; 2021. Todos os direitos
 						reservados.</span
 					>
-					<ul>
-						<li><a href="#">Política de privacidade</a></li>
-						<li><a href="#">Termos e condições</a></li>
-					</ul>
+
+					<?php
+						$legal_args = array(
+							'menu'              => "3",
+							'menu_class'        => "",
+							'menu_id'           => "",
+							'container'         => "",
+							'container_class'   => "",
+							'container_id'      => "",
+							'item_spacing'      => "discard",
+						);
+
+						wp_nav_menu($legal_args);
+					?>
 				</div>
 			</div>
 		</footer>

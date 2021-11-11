@@ -1020,6 +1020,7 @@ main .benefits ol li:nth-of-type(4)::before {
 }
 .news__article {
   width: 80%;
+  margin: 5rem 0 2rem;
 }
 .news__article h2 {
   margin: 0;
@@ -1225,7 +1226,7 @@ main .benefits ol li:nth-of-type(4)::before {
 }
 .news.wrapper nav.prev-next {
   display: block;
-  margin: 2rem 0;
+  margin: 2rem 0 6rem;
 }
 .news.wrapper nav.prev-next ul {
   display: flex;
