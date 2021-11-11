@@ -124,7 +124,7 @@ header {
 
 					// Redeclaring pink underlining
 					&:hover::before {
-						width: 4.3125rem;
+						width: 4rem;
 						transition: 300ms ease;
 					}
 
@@ -149,6 +149,10 @@ header {
 					& > a {
 						color: inherit;
 					}
+				}
+
+				&.current-menu-item::after {
+					background: $M-02;
 				}
 
 				& > a {
@@ -255,7 +259,7 @@ ul.top-nav li:nth-child(3) ul {
 	left: -100%;
 	width: 16rem;
 	padding-top: 3.5rem;
-	z-index: 3;
+	z-index: 1;
 
 	& > li {
 		flex: 1;

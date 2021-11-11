@@ -64,29 +64,7 @@
 
 	-->
 
-		<aside>
-			<?php get_search_form(); ?>
-
-			<span>Arquivo</span>
-
-			<nav>
-				<ul>
-					<?php
-
-						$archives_args = array(
-							'type'            => "monthly",
-							'limit'           => "3",
-							'show_post_count' => true,
-							'post_type'       => "news",
-						);
-
-						wp_get_archives($archives_args);
-
-					?>
-				</ul>
-			</nav>
-
-		</aside>
+	<?php include(locate_template("template-parts/widget-archive.php")); ?>
 
 
 	<!--
@@ -96,54 +74,55 @@
 
 	-->
 
+	<?php
 
-<?php
+		$news_args = array(
+			'post_type' => 'news',
+			'posts_per_page' => 3
+		);
 
-$news_args = array(
-    'post_type' => 'news',
-    'posts_per_page' => 3
-);
+		$the_query = new WP_Query( $news_args ); ?>
 
-$the_query = new WP_Query( $news_args ); ?>
+		<?php if ( $the_query -> have_posts() ) : ?>
 
-<?php if ( $the_query -> have_posts() ) : ?>
+			<?php while ( $the_query -> have_posts() ) : $the_query -> the_post(); ?>
 
-    <?php while ( $the_query -> have_posts() ) : $the_query -> the_post(); ?>
+				<article class="news news__preview">
+					<h2><?php the_title(); ?></h2>
 
-		<article class="news news__article">
-        	<h2><?php the_title(); ?></h2>
+					<div class="info">
+						<h3>
+							<?php 
+								$categories = get_the_category(); 
 
-			<div class="info">
-				<h3>
+								if(!empty($categories)) {
+									echo esc_html($categories[0] -> name);
+								}
+							?>
+						</h3>
+						<time datetime="<?php echo get_the_date("c"); ?>"
+							><?php echo get_the_date("j, F | Y"); ?></time
+						>
+					</div>
+
 					<?php 
-						$categories = get_the_category(); 
-
-						if(!empty($categories)) {
-							echo esc_html($categories[0] -> name);
-						}
+						if (get_the_post_thumbnail())								 
+						the_post_thumbnail();
 					?>
-				</h3>
-				<time datetime="<?php echo get_the_date("c"); ?>"
-					><?php echo get_the_date("j, F | Y"); ?></time
-				>
-			</div>
 
-			<?php 
-				if (get_the_post_thumbnail())								 
-				the_post_thumbnail();
-			?>
+					<p>
+						<?php echo wp_trim_excerpt(); ?>
+					</p>
 
-			<p>
-				<?php echo wp_trim_excerpt(); ?>
-			</p>
+					<a href="<?php echo get_the_permalink() ?>" class="button button__news">Ler mais</a>
+				</article>
 
-			<a href="<?php echo get_the_permalink() ?>" class="button button__news">Ler mais</a>
-		</article>
-    <?php endwhile; ?>
+			<?php endwhile;
 
-    <?php wp_reset_postdata(); ?>
+			wp_reset_postdata();
 
-<?php endif; ?>
+		endif; 
+	?>
 
 </div>
 
@@ -151,7 +130,7 @@ $the_query = new WP_Query( $news_args ); ?>
 
 <?php 
 
-	include(locate_template("template-parts/content-noticias.php"));
+	include(locate_template("template-parts/content-mais_noticias.php"));
 
 	include(locate_template("template-parts/contact-us.php"));
 

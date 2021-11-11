@@ -6,7 +6,7 @@ const revDel = require("rev-del");
 const cleancss = require("gulp-clean-css");
 
 task("watch", function () {
-	watch("assets/scss/**/*", series("sass"));
+	watch("assets/scss/**/*", series("sass", "styles"));
 	watch("assets/js/*", series("scripts"));
 	watch("assets/favicon/*", series("favicon"));
 	watch("assets/fonts/*", series("fonts"));
@@ -67,8 +67,8 @@ task("clean", function () {
 	return src("build", { read: false, allowEmpty: true }).pipe(clean());
 });
 
-task("default", series("vendor", "watch"));
+task("default", series("sass", "watch"));
 task(
 	"build",
-	series("clean", "vendor", "styles", "scripts", "favicon", "fonts", "images")
+	series("clean", "sass", "vendor", "styles", "scripts", "favicon", "fonts", "images")
 );

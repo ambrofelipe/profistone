@@ -53,7 +53,7 @@
 
 <?php 
 
-	include(locate_template("template-parts/content-noticias.php"));
+	include(locate_template("template-parts/content-mais_noticias.php"));
 
 ?>
 

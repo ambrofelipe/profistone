@@ -24,7 +24,7 @@ $ = jQuery;
 	}
 
 	function submitForm() {
-		const submit = $("form button");
+		const submit = $(".contact form button");
 		const thanks = $(".dim, .thanks");
 		const loader = $(".loading");
 
