@@ -24,6 +24,7 @@ $ = jQuery;
 	}
 
 	function submitForm() {
+		const form = $(".contact form");
 		const submit = $(".contact form button");
 		const thanks = $(".dim, .thanks");
 		const loader = $(".loading");
@@ -31,10 +32,10 @@ $ = jQuery;
 		// Reset error individually
 		$("input, textarea").on("focus", function () {
 			$(this).parent().removeClass();
+		});
 
-			if ($(this).attr("type") == "checkbox") {
-				$(this).next().removeClass();
-			}
+		$("input[type='checkbox']").on("change", function () {
+			$(this).next().removeClass();
 		});
 
 		// Handles placeholders
@@ -42,11 +43,11 @@ $ = jQuery;
 			$(this).prop("placeholder", "");
 		});
 
-		$("input[name='name']").on("focusout", function () {
+		$("input#name").on("focusout", function () {
 			$(this).prop("placeholder", "Nome");
 		});
 
-		$("input[name='email']").on("focusout", function () {
+		$("input#email").on("focusout", function () {
 			$(this).prop("placeholder", "E-mail");
 
 			if (!checkEmail($(this).val())) {
@@ -56,7 +57,7 @@ $ = jQuery;
 			}
 		});
 
-		$("input[name='phone']").on("focusout", function () {
+		$("input#phone").on("focusout", function () {
 			$(this).prop("placeholder", "Telefone (opcional)");
 		});
 
@@ -70,11 +71,11 @@ $ = jQuery;
 
 			$("input, textarea").removeClass();
 
-			const name = $("input[name='name']");
-			const email = $("input[name='email']");
-			const phone = $("input[name='phone']");
-			const text = $("textarea");
-			const check = $("input[type='checkbox']");
+			const name = $("input#name");
+			const email = $("input#email");
+			const phone = $("input#phone");
+			const message = $("textarea");
+			const check = $("input#terms");
 
 			if ($.trim(name.val()).length < 3) {
 				name.parent().setClass("error");
@@ -88,10 +89,10 @@ $ = jQuery;
 				email.parent().setClass("success");
 			}
 
-			if ($.trim(text.val()).length < 15) {
-				text.parent().setClass("error");
+			if ($.trim(message.val()).length < 15) {
+				message.parent().setClass("error");
 			} else {
-				text.parent().setClass("success");
+				message.parent().setClass("success");
 			}
 
 			if (!check.is(":checked")) {
@@ -104,38 +105,50 @@ $ = jQuery;
 				loader.animate({ opacity: 1 }, "fast");
 
 				// SUBMIT FORM
-				const submitURL = "";
-
-				const mailData = {
+				const mail = {
+					action: 'profistone_mail',
+					post_id: submit.data("post"),
+					nonce: submit.data("nonce"),
+					url: window.location.href,
 					name: name.val(),
 					email: email.val(),
 					phone: phone.val(),
-					text: text.val(),
+					message: message.val(),
 					check: check.is(":checked") ? "Autorizo." : "Não autorizo.",
 				};
 
-				// jQuery
-				// 	.ajax({
-				// 		type: "POST",
-				// 		url: submitURL,
-				// 		data: mailData,
-				// 	})
-				// 	.done(function (data) {
-				// 		if (data == "OK") {
-				// 			thanks.fadeIn();
-				// 		}
-				// 	})
+				jQuery
+					.ajax({
+						type: "POST",
+						url: settings.ajaxurl,
+						data: mail,
+					})
+					.done(function (response) {
+						if (response.success === true) {
+							thanks.fadeIn();
+							loader.animate({ opacity: 0 }, "fast");
+							$("input, textarea").parent().removeClass();
+							$("input#terms").prop("checked", false);
+							$("input#terms").next().removeClass();
+							$("input, textarea").val("");
+							console.log(response.data);
+						}
+					})
+					.fail(function (xhr, textStatus, error) {
+						thanks.find("h1").text(settings.error);
+						console.log(xhr.statusText);
+						console.log(textStatus);
+						console.log(error);
+					});
 
-				// 	.fail(function (xhr, textStatus, error) {
-				// 		console.log(xhr.statusText);
-				// 		console.log(textStatus);
-				// 		console.log(error);
-				// 	});
-
-				setTimeout(function () {
-					thanks.fadeIn();
-					loader.animate({ opacity: 0 }, "fast");
-				}, 2000);
+				// setTimeout(function () {
+				// 	thanks.fadeIn();
+				// 	loader.animate({ opacity: 0 }, "fast");
+				// 	$("input, textarea").parent().removeClass();
+				// 	$("input#terms").prop("checked", false);
+				// 	$("input#terms").next().removeClass();
+				// 	$("input, textarea").val("");
+				// }, 2000);
 			}
 
 			$(this).trigger("focusout");

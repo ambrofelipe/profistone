@@ -151,7 +151,8 @@ header {
 					}
 				}
 
-				&.current-menu-item::after {
+				&.current-menu-item::after,
+				&.current_page_ancestor::after {
 					background: $M-02;
 				}
 
@@ -188,7 +189,8 @@ header {
 					}
 				}
 
-				&.current-menu-item a {
+				&.current-menu-item a,
+				&.current_page_ancestor a {
 					color: $M-02;
 
 					&::after {

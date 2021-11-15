@@ -34,8 +34,12 @@
 			display: none;
 		}
 
-		.hero h1::before {
-			display: none;
+		.hero h1 {
+			width: 100%;
+
+			&::before {
+				display: none;
+			}
 		}
 	}
 
@@ -206,6 +210,11 @@
 		p {
 			margin: 1.5rem 0;
 			font-size: 1.15em;
+		}
+
+		.attachment-post-thumbnail {
+			width: 100%;
+			object-fit: cover;
 		}
 	}
 
@@ -439,6 +448,8 @@
 				}
 
 				span {
+					display: inline-block;
+					max-width: 30ch;
 					font-size: 1.25em;
 					color: $M-01;
 				}
@@ -491,27 +502,38 @@
 						margin-right: 0;
 					}
 				}
+				
+				a.disabled {
+					color: $G-05;
+					pointer-events: none;
+
+					&::before,
+					&::after {
+						background: $G-05;
+					}
+					
+					&:hover {
+						color: $G-05;
+						
+						&::before,
+						&::after {
+							animation: none;
+						}
+					}
+				}
 			}
 		}
 	}
 }
 
 @keyframes move-back {
-	25% {
+	50% {
 		transform: translateX(-10px);
-	}
-
-	75% {
-		transform: translateX(10px);
 	}
 }
 
 @keyframes move-forward {
-	25% {
+	50% {
 		transform: translateX(10px) rotate(180deg);
-	}
-
-	75% {
-		transform: translateX(-10px) rotate(180deg);
 	}
 }

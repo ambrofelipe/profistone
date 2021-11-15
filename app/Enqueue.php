@@ -34,10 +34,11 @@ class Enqueue {
 		wp_enqueue_script( 'main-script', Assets::get('js', 'main.js'), array('jquery'), null, true );
 
 		// declare the URL to the file that handles the AJAX request (wp-admin/admin-ajax.php)
-		wp_localize_script( 'main-script', 'ajaxObj', 
+		wp_localize_script( 'main-script', 'settings', 
 			array( 
-				'ajaxurl' => admin_url( 'admin-ajax.php' ),
-				'nonce' => wp_create_nonce( "ajaxform" ) 
+				'ajaxurl' => admin_url('admin-ajax.php'),
+				'nonce' => wp_create_nonce('ajaxform'),
+				'error' => __('Desculpe, houve um erro ao enviar o e-mail. Já avisámos a equipa.') 
 				) 
 			);
 	}

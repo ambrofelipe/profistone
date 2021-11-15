@@ -3,7 +3,7 @@
 namespace app;
 
 /**
- * Add custom post types - Serviços and Notícias
+ * Add custom post types - Services, News and Feedback
  * @package app
  */
 class Types {

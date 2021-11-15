@@ -11,13 +11,13 @@
 	--ww-00: 940px;
 }
 
-// Modo noturno
-@media screen and (prefers-color-scheme: dark) {
-	:root {
-		--bg-00: #{$G-08};
-		--fc-00: #{$G-01};
-	}
-}
+// // Modo noturno
+// @media screen and (prefers-color-scheme: dark) {
+// 	:root {
+// 		--bg-00: #{$G-08};
+// 		--fc-00: #{$G-01};
+// 	}
+// }
 
 body {
 	background-color: var(--bg-00, $G-01);

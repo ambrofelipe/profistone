@@ -69,6 +69,7 @@ main .hero {
 
 	&__internal {
 		display: flex;
+		position: relative;
 		align-items: center;
 		justify-content: center;
 
@@ -144,6 +145,30 @@ main .hero {
 
 			&::before {
 				background-color: $G-00;
+			}
+		}
+	}
+
+	&--article {
+		background-image: url(../img/hero-noticias.jpg);
+
+		h1 {
+			width: 100%;
+
+			&::before {
+				background-color: $G-00;
+			}
+		}
+	}
+
+	&--category {
+		background-image: url(../img/hero-noticias.jpg);
+
+		h1 {
+			width: 100%;
+
+			&::before {
+				display: none;
 			}
 		}
 	}
