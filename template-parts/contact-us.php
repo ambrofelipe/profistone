@@ -2,8 +2,27 @@
 			$hero_class = get_post_meta($post->ID, 'hero_class', true); 
 			$nonce = wp_create_nonce('profistone_' . get_the_ID());
 
+			// Notícias
 			if(is_home())
 			$hero_class = "noticias";
+
+			// Onde estamos
+			if(is_page(14)):
+
+		?>
+		
+		<section class="map">
+			<iframe
+				width="450"
+				height="250"
+				frameborder="0" style="border:0"
+				src="https://www.google.com/maps/embed/v1/view?key=AIzaSyAXFfbQdEBYVslEMSHsMfarnV57Af8_uA8&center=38.755571450346686,-9.219530780291663&zoom=15&maptype=roadmap" allowfullscreen>
+			</iframe>
+		</section>
+			
+			
+		<?php
+			endif;
 		?>
 
 		<div class="dim"></div>
@@ -69,35 +88,9 @@
 		</section>
 	
 	<?php 
-
-		// function send($mail) {
-		// 	if(!$mail) {
-		// 		throw new Exception("Logged error");
-		// 	}
-
-		// 	return $mail;
-		// }
-
-		// if($_SERVER['REQUEST_METHOD'] === "POST") {
-		// 	$name    = $_POST["lead_name"];
-		// 	$email   = $_POST['lead_email'];
-		// 	$phone   = $_POST['lead_phone'];
-		// 	$message = $_POST['lead_message'];
-
-		// 	$to = "ambrofelipe@gmail.com";
-		// 	$subject = "👋 Novo pedido de contacto do site";
-		// 	$headers = "From: " . $email . "\r\n" . 
-		// 			"Reply-To: " . $email . "\r\n";
-
-		// 	try {
-		// 		send(wp_mail($to, $subject, strip_tags($message), $headers));
-		// 	} catch (Exception $e) {
-		// 		error_log($e->getMessage());
-		// 	}
-		// }
-
 	
-		if($hero_class === "contactos") {
+		// Onde estamos
+		if(is_page(14)) {
 			include(locate_template("template-parts/address.php"));
 		} 
 	

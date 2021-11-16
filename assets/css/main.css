@@ -209,7 +209,7 @@ body {
 h2 {
   width: 30ch;
   margin: 0 auto;
-  font-size: 2em;
+  font-size: clamp(1em, 6vw, 2em);
   color: #4b58a0;
   text-align: center;
   text-transform: uppercase;
@@ -231,6 +231,11 @@ h3 {
 header {
   width: min(100%, var(--ww-00));
   margin: 1rem auto;
+}
+@media (max-width: 991px) {
+  header {
+    padding: 0 1rem;
+  }
 }
 header address {
   width: 100%;
@@ -279,6 +284,11 @@ header address ul li.linkedin a {
   height: 1.25rem;
   background: url(../img/ico-linkedin.svg) center/contain no-repeat;
 }
+@media (max-width: 991px) {
+  header address ul li:nth-child(1) {
+    display: none;
+  }
+}
 header nav {
   padding: 1.5rem 0 0;
   display: flex;
@@ -289,6 +299,8 @@ header nav a.logo {
   width: 250px;
   height: 45px;
   background: url(../img/logo-blue.svg) -15px center/cover no-repeat;
+  opacity: 1;
+  transition: all 200ms ease-out;
 }
 header nav ul.top-nav {
   display: inline-flex;
@@ -301,11 +313,11 @@ header nav ul.top-nav {
 header nav ul.top-nav > li {
   position: relative;
 }
-header nav ul.top-nav > li:nth-child(3) {
+header nav ul.top-nav > li.menu-item-has-children {
   padding-right: 1.125rem;
   color: #4b58a0;
 }
-header nav ul.top-nav > li:nth-child(3)::before {
+header nav ul.top-nav > li.menu-item-has-children::before {
   content: "";
   display: block;
   width: 0;
@@ -317,7 +329,7 @@ header nav ul.top-nav > li:nth-child(3)::before {
   transition: 300ms ease;
   z-index: 2;
 }
-header nav ul.top-nav > li:nth-child(3)::after {
+header nav ul.top-nav > li.menu-item-has-children::after {
   content: "";
   display: inline-block;
   position: absolute;
@@ -331,22 +343,22 @@ header nav ul.top-nav > li:nth-child(3)::after {
   transform: rotate(0deg);
   transition: 300ms ease-in-out;
 }
-header nav ul.top-nav > li:nth-child(3):hover::before {
-  width: 4rem;
+header nav ul.top-nav > li.menu-item-has-children:hover::before {
+  width: 4.25rem;
   transition: 300ms ease;
 }
-header nav ul.top-nav > li:nth-child(3):hover {
+header nav ul.top-nav > li.menu-item-has-children:hover {
   color: #f5a794;
 }
-header nav ul.top-nav > li:nth-child(3):hover::after {
+header nav ul.top-nav > li.menu-item-has-children:hover::after {
   background: #f5a794;
   transform: rotate(180deg);
   transition: 300ms ease-in-out;
 }
-header nav ul.top-nav > li:nth-child(3):hover > ul {
+header nav ul.top-nav > li.menu-item-has-children:hover > ul {
   display: block;
 }
-header nav ul.top-nav > li:nth-child(3) > a {
+header nav ul.top-nav > li.menu-item-has-children > a {
   color: inherit;
 }
 header nav ul.top-nav > li.current-menu-item::after, header nav ul.top-nav > li.current_page_ancestor::after {
@@ -387,32 +399,55 @@ header nav ul.top-nav > li.current-menu-item a, header nav ul.top-nav > li.curre
 header nav ul.top-nav > li.current-menu-item a::after, header nav ul.top-nav > li.current_page_ancestor a::after {
   width: 100%;
 }
-@media (max-width: 991px) {
+@media screen and (max-width: 991px) {
   header nav {
     position: relative;
   }
   header nav::after {
     content: "";
     position: absolute;
-    top: calc(50% - 2px);
+    top: 2.5rem;
     right: 1rem;
     width: 30px;
     height: 4px;
     background: #f5a794;
     box-shadow: 0 10px #f5a794, 0 -10px #f5a794;
+    transition: box-shadow 200ms ease-out;
+  }
+  header nav.nav-open {
+    background-color: white;
+    transition: background-color 200ms ease-out;
+  }
+  header nav.nav-open a.logo {
+    width: 250px;
+    height: 45px;
+    opacity: 0;
+    transition: 200ms ease-out;
+  }
+  header nav.nav-open::after {
+    box-shadow: none;
+    transition: box-shadow 200ms ease-out;
   }
   header nav ul.top-nav {
-    display: none;
-    background: white;
+    display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    height: 2rem;
+    background-color: white;
+    opacity: 0;
+    transition: 200ms ease-out;
+  }
+  header nav ul.top-nav.menu-open {
     height: 100vh;
-    -webkit-animation: fade 0.2s ease-out;
-    animation: fade 0.2s ease-out;
+    opacity: 1;
+    transition: 200ms ease-out;
   }
   header nav ul.top-nav > li {
     flex: 0;
     opacity: 0;
+    top: -7vh;
+    left: -36vw;
     -webkit-animation: enter 0.3s ease-out forwards;
     animation: enter 0.3s ease-out forwards;
   }
@@ -436,6 +471,10 @@ header nav ul.top-nav > li.current-menu-item a::after, header nav ul.top-nav > l
     -webkit-animation-delay: 0.4s;
     animation-delay: 0.4s;
   }
+  header nav ul.top-nav > li:nth-child(6) {
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+  }
   header nav ul.top-nav > li + li {
     margin-top: 0.75rem;
   }
@@ -449,16 +488,21 @@ header nav ul.top-nav > li.current-menu-item a::after, header nav ul.top-nav > l
   }
 }
 
-ul.top-nav li:nth-child(3) ul {
+ul.top-nav li.menu-item-has-children ul {
   display: none;
   position: absolute;
-  top: 0;
+  top: 1rem;
   left: -100%;
   width: 16rem;
-  padding-top: 3.5rem;
-  z-index: 1;
+  padding-top: 2.5rem;
+  z-index: 3;
 }
-ul.top-nav li:nth-child(3) ul > li {
+@media screen and (max-width: 991px) {
+  ul.top-nav li.menu-item-has-children ul {
+    top: -20vh;
+  }
+}
+ul.top-nav li.menu-item-has-children ul > li {
   flex: 1;
   padding: 0.5rem;
   background-color: var(--bg-00, #f9fafb);
@@ -467,43 +511,43 @@ ul.top-nav li:nth-child(3) ul > li {
   -webkit-animation: enter 0.2s ease forwards;
   animation: enter 0.2s ease forwards;
 }
-ul.top-nav li:nth-child(3) ul > li:nth-child(1) {
+ul.top-nav li.menu-item-has-children ul > li:nth-child(1) {
   -webkit-animation-duration: 0.2s;
   animation-duration: 0.2s;
   -webkit-animation-delay: 0s;
   animation-delay: 0s;
 }
-ul.top-nav li:nth-child(3) ul > li:nth-child(2) {
+ul.top-nav li.menu-item-has-children ul > li:nth-child(2) {
   -webkit-animation-duration: 0.3s;
   animation-duration: 0.3s;
   -webkit-animation-delay: 0.1s;
   animation-delay: 0.1s;
 }
-ul.top-nav li:nth-child(3) ul > li:nth-child(3) {
+ul.top-nav li.menu-item-has-children ul > li:nth-child(3) {
   -webkit-animation-duration: 0.4s;
   animation-duration: 0.4s;
   -webkit-animation-delay: 0.2s;
   animation-delay: 0.2s;
 }
-ul.top-nav li:nth-child(3) ul > li:nth-child(4) {
+ul.top-nav li.menu-item-has-children ul > li:nth-child(4) {
   -webkit-animation-duration: 0.5s;
   animation-duration: 0.5s;
   -webkit-animation-delay: 0.3s;
   animation-delay: 0.3s;
 }
-ul.top-nav li:nth-child(3) ul > li:nth-child(5) {
+ul.top-nav li.menu-item-has-children ul > li:nth-child(5) {
   -webkit-animation-duration: 0.6s;
   animation-duration: 0.6s;
   -webkit-animation-delay: 0.4s;
   animation-delay: 0.4s;
 }
-ul.top-nav li:nth-child(3) ul > li:nth-child(6) {
+ul.top-nav li.menu-item-has-children ul > li:nth-child(6) {
   -webkit-animation-duration: 0.7s;
   animation-duration: 0.7s;
   -webkit-animation-delay: 0.5s;
   animation-delay: 0.5s;
 }
-ul.top-nav li:nth-child(3) ul > li > a {
+ul.top-nav li.menu-item-has-children ul > li > a {
   display: block;
   padding: 0.625em 0.5em;
   background-color: var(--bg-00, #f9fafb);
@@ -511,18 +555,30 @@ ul.top-nav li:nth-child(3) ul > li > a {
   color: #4b58a0;
   text-decoration: none;
   text-transform: uppercase;
-  transform: background-color 200ms ease;
+  transform: background-color 200ms ease-out;
 }
-ul.top-nav li:nth-child(3) ul > li > a:hover {
+ul.top-nav li.menu-item-has-children ul > li > a:hover {
   background-color: #ffebe6;
-  transform: background-color 200ms ease;
+  transform: background-color 200ms ease-out;
 }
 @media screen and (max-width: 991px) {
-  ul.top-nav li:nth-child(3) ul > li {
+  ul.top-nav li.menu-item-has-children ul > li > a {
+    padding: 0.75rem 0.5rem;
+    background: #ffebe6;
+    transform: background-color 200ms ease-out;
+  }
+  ul.top-nav li.menu-item-has-children ul > li > a:hover {
+    background-color: white;
+    transform: background-color 200ms ease-out;
+  }
+}
+@media screen and (max-width: 991px) {
+  ul.top-nav li.menu-item-has-children ul > li {
+    padding: 0;
     background: #ffebe6;
   }
 }
-ul.top-nav li:nth-child(3) ul:hover, ul.top-nav li:nth-child(3) ul > li:hover {
+ul.top-nav li.menu-item-has-children ul:hover, ul.top-nav li.menu-item-has-children ul > li:hover {
   display: block;
 }
 
@@ -580,15 +636,30 @@ main article.main-article p {
   width: 70%;
   line-height: 1.5;
 }
+@media screen and (max-width: 991px) {
+  main article.main-article p {
+    width: 90%;
+  }
+}
 main article.main-article__home p {
   margin: 0.5rem 0 0.5rem 15rem;
   text-align: left;
+}
+@media screen and (max-width: 991px) {
+  main article.main-article__home p {
+    margin: 0.5rem 1rem;
+  }
 }
 main article.main-article__home::before {
   position: absolute;
   top: -50%;
   left: -17%;
   background-color: #4b58a0;
+}
+@media screen and (max-width: 991px) {
+  main article.main-article__home::before {
+    display: none;
+  }
 }
 main article.main-article__sobre h2 {
   width: 100%;
@@ -645,6 +716,11 @@ main .hero__home h1 {
   color: #4b58a0;
   line-height: 1.5;
 }
+@media screen and (max-width: 991px) {
+  main .hero__home h1 {
+    width: unset;
+  }
+}
 main .hero__home h1 span {
   display: block;
   background: #4b58a0;
@@ -683,6 +759,11 @@ main .hero__home .mouse .scroll {
   animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
+}
+@media screen and (max-width: 991px) {
+  main .hero__home .mouse {
+    display: none;
+  }
 }
 main .hero__internal {
   display: flex;
@@ -860,6 +941,12 @@ main .benefits ol {
   justify-content: space-between;
   margin: 1rem 0;
 }
+@media screen and (max-width: 991px) {
+  main .benefits ol {
+    flex-direction: column;
+    margin: 1rem;
+  }
+}
 main .benefits ol li {
   width: 45%;
   margin: 1.5rem 0;
@@ -867,6 +954,11 @@ main .benefits ol li {
   font-size: 1.25em;
   color: #4b58a0;
   text-align: center;
+}
+@media screen and (max-width: 991px) {
+  main .benefits ol li {
+    width: unset;
+  }
 }
 main .benefits ol li:nth-of-type(2), main .benefits ol li:nth-of-type(4) {
   padding: 0;
@@ -923,63 +1015,6 @@ main .benefits ol li:nth-of-type(4)::before {
 }
 .news__single .hero h1::before {
   display: none;
-}
-.news__nav {
-  margin-top: 2rem;
-}
-.news__nav ul {
-  max-width: 940px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-.news__nav ul li {
-  margin: 0.5rem 0;
-  padding: 0 1rem;
-  height: 1.25rem;
-}
-.news__nav ul li:not(:last-child) {
-  border-right: 2px solid #4b58a0;
-}
-.news__nav ul li a {
-  font-size: 1.25em;
-  color: #4b58a0;
-  text-decoration: none;
-  transition: 200ms ease;
-}
-.news__nav ul li a::after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 4px;
-  border-radius: 3px;
-  background: #f5a794;
-  position: relative;
-  bottom: -0.15rem;
-  transition: 300ms ease;
-}
-.news__nav ul li a.current-menu-item {
-  color: #f5a794;
-}
-.news__nav ul li a.current-menu-item::after {
-  width: 100%;
-}
-.news__nav ul li a:hover {
-  color: #f5a794;
-  transition: 200ms ease;
-}
-.news__nav ul li a:hover::after {
-  width: 100%;
-  transition: 300ms ease;
-}
-.news__nav ul li.current-menu-item a {
-  color: #f5a794;
-}
-.news__nav ul li.current-menu-item a::after {
-  width: 100%;
 }
 .news__preview, .news__article {
   position: relative;
@@ -1082,11 +1117,21 @@ main .benefits ol li:nth-of-type(4)::before {
   justify-content: space-between;
   margin: 1rem 0;
 }
+@media screen and (max-width: 991px) {
+  .news__others ol, .news__others--home ol {
+    flex-direction: column;
+  }
+}
 .news__others ol li figure, .news__others--home ol li figure {
   position: relative;
   width: 17rem;
   margin: 1rem;
   padding: 0 0.5rem;
+}
+@media screen and (max-width: 991px) {
+  .news__others ol li figure, .news__others--home ol li figure {
+    margin: 2rem auto;
+  }
 }
 .news__others ol li figure figcaption, .news__others--home ol li figure figcaption {
   margin: 0.5rem 0;
@@ -1139,6 +1184,11 @@ main .benefits ol li:nth-of-type(4)::before {
   -webkit-mask: url(../img/triangle-right.svg) center/cover no-repeat;
   mask: url(../img/triangle-right.svg) center/cover no-repeat;
   z-index: 2;
+}
+@media screen and (max-width: 991px) {
+  .news__others--home::after, .news__others--home--home::after {
+    display: none;
+  }
 }
 
 .news.wrapper {
@@ -1371,8 +1421,19 @@ main .benefits ol li:nth-of-type(4)::before {
   justify-content: space-between;
   margin-top: 3rem;
 }
+@media screen and (max-width: 991px) {
+  .feedback ul {
+    flex-direction: column;
+  }
+}
 .feedback ul li {
   width: 30%;
+}
+@media screen and (max-width: 991px) {
+  .feedback ul li {
+    width: 75%;
+    margin: 2rem auto;
+  }
 }
 .feedback ul li img {
   display: block;
@@ -1435,6 +1496,36 @@ main .benefits ol li:nth-of-type(4)::before {
   clip-path: url(#hero-path);
 }
 
+.map {
+  position: relative;
+  top: -6rem;
+  width: 100%;
+  height: 720px;
+  z-index: -1;
+}
+.map::after {
+  content: "";
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 6.5rem;
+  height: 9rem;
+  background: url(../img/pin.svg);
+}
+
+iframe[src*="google.com/maps"] {
+  width: 100%;
+  height: 720px;
+}
+
+.map-frame {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
 figure.mapa {
   position: relative;
   top: -6rem;
@@ -1447,17 +1538,6 @@ figure.mapa img {
   object-fit: cover;
   -o-object-position: center;
   object-position: center;
-}
-figure.mapa::after {
-  content: "";
-  position: absolute;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: block;
-  width: 6.5rem;
-  height: 9rem;
-  background: url(../img/pin.svg);
 }
 
 .contact + address {
@@ -1602,6 +1682,76 @@ footer .bar > .wrapper ul li:last-child {
 footer .bar > .wrapper ul li a {
   color: #f9fafb;
   text-decoration: none;
+}
+
+.news__nav,
+.services__nav {
+  margin-top: 2rem;
+}
+.news__nav ul,
+.services__nav ul {
+  max-width: 940px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.news__nav ul li,
+.services__nav ul li {
+  margin: 0.5rem 0;
+  padding: 0 1rem;
+  height: 1.25rem;
+}
+.news__nav ul li:not(:last-child),
+.services__nav ul li:not(:last-child) {
+  border-right: 2px solid #4b58a0;
+}
+.news__nav ul li a,
+.services__nav ul li a {
+  font-size: 1.25em;
+  color: #4b58a0;
+  text-decoration: none;
+  transition: 200ms ease;
+}
+.news__nav ul li a::after,
+.services__nav ul li a::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 4px;
+  border-radius: 3px;
+  background: #f5a794;
+  position: relative;
+  bottom: -0.15rem;
+  transition: 300ms ease;
+}
+.news__nav ul li a.current-menu-item,
+.services__nav ul li a.current-menu-item {
+  color: #f5a794;
+}
+.news__nav ul li a.current-menu-item::after,
+.services__nav ul li a.current-menu-item::after {
+  width: 100%;
+}
+.news__nav ul li a:hover,
+.services__nav ul li a:hover {
+  color: #f5a794;
+  transition: 200ms ease;
+}
+.news__nav ul li a:hover::after,
+.services__nav ul li a:hover::after {
+  width: 100%;
+  transition: 300ms ease;
+}
+.news__nav ul li.current-menu-item a,
+.services__nav ul li.current-menu-item a {
+  color: #f5a794;
+}
+.news__nav ul li.current-menu-item a::after,
+.services__nav ul li.current-menu-item a::after {
+  width: 100%;
 }
 
 details {
@@ -1925,7 +2075,7 @@ hr.divider__home::after {
   right: 0;
   bottom: 0;
   font-weight: 400;
-  font-size: 3.75em;
+  font-size: clamp(3em, 10vw, 3.75em);
   color: #f9fafb;
 }
 hr.divider__sobre {
@@ -2026,7 +2176,7 @@ hr.divider__servicos::before {
 .contact form label[for=terms] {
   position: relative;
   left: 5px;
-  font-size: 0.9em;
+  font-size: clamp(0.7em, 2vw, 0.9em);
 }
 .contact form label[for=terms] a {
   color: #4b58a0;
@@ -2036,12 +2186,22 @@ hr.divider__servicos::before {
   width: auto;
   margin-left: 2rem;
 }
+@media screen and (max-width: 991px) {
+  .contact form input[type=checkbox] {
+    margin-left: 0;
+  }
+}
 .contact form button {
   float: right;
   margin: 0.25rem 0 0 0;
   font-weight: 400;
   font-size: 1em;
   text-transform: none;
+}
+@media screen and (max-width: 991px) {
+  .contact form button {
+    margin-bottom: 2rem;
+  }
 }
 .contact::after {
   content: "";
@@ -2093,7 +2253,7 @@ hr.divider__servicos::before {
 .contact__contactos::after {
   transform: none;
   left: unset;
-  bottom: -4rem;
+  bottom: -2rem;
   right: 0;
   background: #ffebe6;
   -webkit-mask: url(../img/triangle-right.svg) center/cover no-repeat;

@@ -10,10 +10,19 @@
 		flex-wrap: nowrap;
 		justify-content: space-between;
 
+		@include mobile {
+			flex-direction: column;
+		}
+
 		margin-top: 3rem;
 
 		li {
 			width: 30%;
+
+			@include mobile {
+				width: 75%;
+				margin: 2rem auto;
+			}
 
 			img {
 				display: block;

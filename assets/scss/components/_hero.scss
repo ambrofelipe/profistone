@@ -25,6 +25,10 @@ main .hero {
 			color: $M-01;
 			line-height: 1.5;
 
+			@include mobile {
+				width: unset;
+			}
+
 			span {
 				display: block;
 				background: $M-01;
@@ -63,6 +67,10 @@ main .hero {
 				animation-duration: 2s;
 				animation-timing-function: cubic-bezier(0.15, 0.41, 0.69, 0.94);
 				animation-iteration-count: infinite;
+			}
+
+			@include mobile {
+				display: none;
 			}
 		}
 	}

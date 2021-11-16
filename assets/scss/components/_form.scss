@@ -90,7 +90,7 @@
 		label[for="terms"] {
 			position: relative;
 			left: 5px;
-			font-size: 0.9em;
+			font-size: clamp(0.7em, 2vw, 0.9em);
 
 			a {
 				color: $M-01;
@@ -101,6 +101,10 @@
 			display: inline;
 			width: auto;
 			margin-left: 2rem;
+
+			@include mobile {
+				margin-left: 0;
+			}
 		}
 
 		button {
@@ -109,6 +113,10 @@
 			font-weight: 400;
 			font-size: 1em;
 			text-transform: none;
+
+			@include mobile {
+				margin-bottom: 2rem;
+			}
 		}
 	}
 
@@ -163,7 +171,7 @@
 	&__contactos::after {
 		transform: none;
 		left: unset;
-		bottom: -4rem;
+		bottom: -2rem;
 		right: 0;
 		background: $S-02;
 		mask: url(../img/triangle-right.svg) center/cover no-repeat;

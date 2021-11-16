@@ -23,6 +23,16 @@ $ = jQuery;
 		});
 	}
 
+	function flipBurger() {
+		const nav = $("header nav");
+		const menu = $(".top-nav");
+
+		menu.on("click", function() {
+			nav.toggleClass("nav-open");
+			$(this).toggleClass("menu-open");
+		});
+	}
+
 	function submitForm() {
 		const form = $(".contact form");
 		const submit = $(".contact form button");
@@ -140,15 +150,6 @@ $ = jQuery;
 						console.log(textStatus);
 						console.log(error);
 					});
-
-				// setTimeout(function () {
-				// 	thanks.fadeIn();
-				// 	loader.animate({ opacity: 0 }, "fast");
-				// 	$("input, textarea").parent().removeClass();
-				// 	$("input#terms").prop("checked", false);
-				// 	$("input#terms").next().removeClass();
-				// 	$("input, textarea").val("");
-				// }, 2000);
 			}
 
 			$(this).trigger("focusout");
@@ -174,6 +175,7 @@ $ = jQuery;
 
 	function init() {
 		cookieBar();
+		flipBurger();
 		submitForm();
 		handlePopup();
 	}

@@ -17,12 +17,20 @@ main {
 		p {
 			width: 70%;
 			line-height: 1.5;
+
+			@include mobile {
+				width: 90%;
+			}
 		}
 
 		&__home {
 			p {
 				margin: 0.5rem 0 0.5rem 15rem;
 				text-align: left;
+
+				@include mobile {
+					margin: 0.5rem 1rem;
+				}
 			}
 
 			&::before {
@@ -31,6 +39,10 @@ main {
 				top: -50%;
 				left: -17%;
 				background-color: $M-01;
+
+				@include mobile {
+					display: none;
+				}
 			}
 		}
 

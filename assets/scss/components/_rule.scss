@@ -32,7 +32,7 @@ hr.divider {
 			right: 0;
 			bottom: 0;
 			font-weight: 400;
-			font-size: 3.75em;
+			font-size: clamp(3em, 10vw, 3.75em);
 			color: $G-01;
 		}
 	}
