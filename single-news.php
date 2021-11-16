@@ -43,7 +43,6 @@
 		<h1><?php the_title(); ?></h1>
 	</div>
 
-	
 	<div class="news wrapper">
 
 	<!--
@@ -53,29 +52,7 @@
 
 	-->
 
-		<aside>
-			<?php get_search_form(); ?>
-
-			<span>Arquivo</span>
-
-			<nav>
-				<ul>
-					<?php
-
-						$archives_args = array(
-							'type'            => "monthly",
-							'limit'           => "3",
-							'show_post_count' => true,
-							'post_type'       => "news",
-						);
-
-						wp_get_archives($archives_args);
-
-					?>
-				</ul>
-			</nav>
-
-		</aside>
+	<?php include(locate_template("template-parts/widget-archive.php")); ?>
 
 
 	<!--
@@ -139,25 +116,25 @@
 	<ul>
 		<li>
 			<a 
-				href="<?php echo $prev_article_link; ?>" 
-				class="<?php if(empty($prev_article)) echo "disabled"; ?>"
+				href="<?php echo !empty($prev_article) ? $prev_article_link : ""; ?>" 
+				class="<?php echo empty($prev_article) ? "disabled" : ""; ?>"
 			>Notícia anterior</a>
 			<?php if(!empty($prev_article_img)): ?>
 				<img src="<?php echo $prev_article_img; ?>" alt="<?php echo $prev_article_title; ?>">
 			<?php endif; ?>
 			<span>
-				<?php echo $prev_article_title; ?>
+				<?php echo !empty($prev_article) ? $prev_article_title : ""; ?>
 			</span>
 		</li>
 		<li>
 			<a 
-				href="<?php echo $next_article_link; ?>"
-				class="<?php if(empty($next_article)) echo "disabled"; ?>"
+				href="<?php echo !empty($next_article) ? $next_article_link : ""; ?>"
+				class="<?php echo empty($next_article) ? "disabled" : ""; ?>"
 			>Próxima notícia</a>
 			<span>
-				<?php echo $next_article_title; ?>
+				<?php echo !empty($next_article) ? $next_article_title : ""; ?>
 			</span>
-			<?php if(!empty($next_article_img)): ?>
+			<?php if(!empty($next_article)): ?>
 				<img src="<?php echo $next_article_img; ?>" alt="<?php echo $next_article_title; ?>">
 			<?php endif; ?>
 		</li>

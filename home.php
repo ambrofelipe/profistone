@@ -39,7 +39,7 @@
 
 		
 	-->
-
+	<div id="watcher"></div>
 	<?php
 		$categories_args = array(
 			'menu'              => "14",

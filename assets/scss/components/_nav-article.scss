@@ -1,0 +1,107 @@
+@use "../abstracts" as *;
+
+.news.wrapper nav.prev-next {
+	display: block;
+	margin: 2rem 0 6rem;
+
+	ul {
+		display: flex;
+		justify-content: space-between;
+
+		li {
+			position: relative;
+
+			a {
+				display: block;
+				margin: 0.5rem 0;
+				font-size: 1.75em;
+				color: $M-02;
+				text-decoration: none;
+				text-transform: uppercase;
+			}
+
+			img {
+				width: 75px;
+				height: 45px;
+				margin: 0.5rem;
+				object-fit: cover;
+				vertical-align: middle;
+			}
+
+			span {
+				display: inline-block;
+				max-width: 30ch;
+				font-size: 1.25em;
+				color: $M-01;
+			}
+
+			&:first-child {
+				a::before {
+					content: "";
+					display: block;
+					position: absolute;
+					top: -0.45rem;
+					left: -2.75rem;
+					width: 3rem;
+					height: 4rem;
+					background: $M-02;
+					mask: url("../img/ico-prev-next.svg") center / contain no-repeat;
+				}
+
+				a:hover::before {
+					animation: move-back 1s ease infinite;
+					animation-fill-mode: both;
+				}
+
+				img {
+					margin-left: 0;
+				}
+			}
+
+			&:last-child {
+				text-align: right;
+
+				a::after {
+					content: "";
+					display: block;
+					position: absolute;
+					top: -0.45rem;
+					right: -2.75rem;
+					width: 3rem;
+					height: 4rem;
+					background: $M-02;
+					mask: url("../img/ico-prev-next.svg") center / contain no-repeat;
+					transform: rotate(180deg);
+				}
+
+				a:hover::after {
+					animation: move-forward 1s ease infinite;
+					animation-fill-mode: both;
+				}
+
+				img {
+					margin-right: 0;
+				}
+			}
+			
+			a.disabled {
+				color: $G-05;
+				pointer-events: none;
+
+				&::before,
+				&::after {
+					background: $G-05;
+				}
+				
+				&:hover {
+					color: $G-05;
+					
+					&::before,
+					&::after {
+						animation: none;
+					}
+				}
+			}
+		}
+	}
+}

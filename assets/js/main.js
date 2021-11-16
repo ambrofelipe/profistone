@@ -33,6 +33,38 @@ $ = jQuery;
 		});
 	}
 
+	function stickNav() {
+		const watcher = $("#watcher");
+		const nav = $(".news__nav, .services__nav");
+		const search = $(".news aside div");
+
+		let please = {
+			root: null, 
+			rootMargin: "0px", 
+			threshold: 1.0
+		};
+
+		function stickIt(entries, observer) {
+			if(nav.length > 0) {
+				entries.forEach((entry) => {
+					if(!entry.isIntersecting) {
+						nav.addClass("news__nav--sticky");
+						search.addClass("widget-sticky");
+					} else {
+						nav.removeClass("news__nav--sticky");
+						search.removeClass("widget-sticky");
+					}
+				});
+			}
+		}
+
+		const ob = new IntersectionObserver(stickIt, please);
+		
+		if(watcher.length > 0) {
+			ob.observe(watcher[0]);
+		}
+	}
+
 	function submitForm() {
 		const form = $(".contact form");
 		const submit = $(".contact form button");
@@ -176,6 +208,7 @@ $ = jQuery;
 	function init() {
 		cookieBar();
 		flipBurger();
+		stickNav();
 		submitForm();
 		handlePopup();
 	}

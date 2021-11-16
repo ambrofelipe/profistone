@@ -1,23 +1,24 @@
 <aside>
-	<?php get_search_form(); ?>
+	<div>
+		<?php get_search_form(); ?>
 
-	<span>Arquivo</span>
+		<span>Arquivo</span>
 
-	<nav>
-		<ul>
-			<?php
+		<nav>
+			<ul>
+				<?php
 
-				$archives_args = array(
-					'type'            => "monthly",
-					'limit'           => "3",
-					'show_post_count' => true,
-					'post_type'       => "news",
-				);
+					$archives_args = array(
+						'type'            => "monthly",
+						'limit'           => "3",
+						'show_post_count' => true,
+						'post_type'       => "news",
+					);
 
-				wp_get_archives($archives_args);
+					wp_get_archives($archives_args);
 
-			?>
-		</ul>
-	</nav>
-
+				?>
+			</ul>
+		</nav>
+	</div>
 </aside>

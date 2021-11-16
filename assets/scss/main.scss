@@ -15,7 +15,9 @@
 @use "components/footer";
 
 // components
-@use "components/page-nav";
+@use "components/nav-category";
+@use "components/nav-article";
+@use "components/search";
 @use "components/details";
 @use "components/button";
 @use "components/loading";
