@@ -11,11 +11,36 @@
         <?php wp_head(); ?>
 
 		<!-- favicon -->
-		<link rel="apple-touch-icon" sizes="180x180" href="" />
-		<link rel="icon" type="image/png" sizes="192x192" href="" />
-		<link rel="icon" type="image/png" sizes="32x32" href="" />
-
+		<link rel="icon" sizes="any" href="<?php site_url(); ?>/wp-content/themes/Profistone/assets/favicon/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="<?php site_url(); ?>/wp-content/themes/Profistone/assets/favicon/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="<?php site_url(); ?>/wp-content/themes/Profistone/assets/favicon/icon-192.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="<?php site_url(); ?>/wp-content/themes/Profistone/assets/favicon/icon-32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="<?php site_url(); ?>/wp-content/themes/Profistone/assets/favicon/icon-16.png" />
+		<link rel="manifest" href="<?php site_url(); ?>/wp-content/themes/Profistone/assets/favicon/site.webmanifest" />
+		
 		<meta name="theme-color" content="#4B58A1" />
+
+		<meta
+			name="description"
+			content="Estamos no mercado desde 1978, dedicados à prestação de serviços de contabilidade. Consigo desde o início."
+		/>
+
+		<meta property="og:title" content="Profistone - Consigo desde o início." />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="<?php site_url(); ?>" />
+		<meta property="og:image" content="<?php site_url(); ?>/wp-content/themes/Profistone/assets/favicon/icon-192.png" />
+		<meta
+			property="og:description"
+			content="Estamos no mercado desde 1978, dedicados à prestação de serviços de contabilidade. Consigo desde o início."
+		/>
+
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content="Profistone - Consigo desde o início." />
+		<meta
+			name="twitter:description"
+			content="Estamos no mercado desde 1978, dedicados à prestação de serviços de contabilidade. Consigo desde o início."
+		/>
+		<meta name="twitter:image" content="<?php site_url(); ?>/wp-content/themes/Profistone/assets/favicon/icon-192.png" />
 
 		<!-- Google Tag Manager -->
 
