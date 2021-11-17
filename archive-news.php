@@ -3,6 +3,8 @@
 	get_header(); 
 
 	$category = get_queried_object();
+	$year 	  = get_query_var('year');
+	$monthnum = get_query_var('monthnum');
 	
 ?>
 
@@ -81,18 +83,14 @@
 	-->
 
 	<?php
-		if($category) {
-			$news_args = array(
-				'post_type' => 'news',
-				'cat' => $category->term_id,
-				'posts_per_page' => 3
-			);
-		} else {
-			$news_args = array(
-				'post_type' => 'news',
-				'posts_per_page' => 3
-			);
-		}
+
+		$news_args = array(
+			'post_type' 	 => 'news',
+			'cat' 			 => $category ? $category->term_id : '',
+			'year'			 => $year ? $year : '',
+			'monthnum'		 => $monthnum ? $monthnum : '',
+			'posts_per_page' => -1
+		);
 
 
 		$the_query = new WP_Query( $news_args ); ?>
