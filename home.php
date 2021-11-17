@@ -81,11 +81,11 @@
 			'posts_per_page' => 3
 		);
 
-		$the_query = new WP_Query( $news_args ); ?>
+		$the_query = new WP_Query($news_args); ?>
 
-		<?php if ( $the_query -> have_posts() ) : ?>
+		<?php if ($the_query->have_posts()) : ?>
 
-			<?php while ( $the_query -> have_posts() ) : $the_query -> the_post(); ?>
+			<?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
 
 				<article class="news news__preview">
 					<h2><?php the_title(); ?></h2>
@@ -96,7 +96,7 @@
 								$categories = get_the_category(); 
 
 								if(!empty($categories)) {
-									echo esc_html($categories[0] -> name);
+									echo esc_html($categories[0]->name);
 								}
 							?>
 						</h3>

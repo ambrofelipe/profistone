@@ -85,7 +85,7 @@ main .hero {
 			position: relative;
 			width: 35rem;
 			font-weight: 400;
-			font-size: 4em;
+			font-size: clamp(3em, 10vw, 4em);
 			color: $G-00;
 			line-height: 1.5;
 			text-align: center;

@@ -9,6 +9,8 @@ class Setup {
      */
     public function __construct(){
         add_action('after_setup_theme', array($this, 'profistone_theme_setup'));
+		remove_action('shutdown', array($this, 'wp_ob_end_flush_all'), 1);
+		add_action('shutdown', function() { while (@ob_end_flush()); });
     }
 
     /**
@@ -54,5 +56,4 @@ class Setup {
          */
         add_theme_support('html5', array('search-form'));
     }
-
 }

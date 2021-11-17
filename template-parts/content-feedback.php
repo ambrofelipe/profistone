@@ -14,7 +14,7 @@
 		<ul>
 
 <?php
-	while ($feedback -> have_posts()) : $feedback -> the_post(); 
+	while ($feedback->have_posts()) : $feedback->the_post(); 
 
 ?>
 	<li>

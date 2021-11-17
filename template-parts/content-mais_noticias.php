@@ -17,7 +17,7 @@
 	<?php endif; ?>
 	<ol>
 <?php
-	while ($noticias -> have_posts()) : $noticias -> the_post(); 
+	while ($noticias->have_posts()) : $noticias->the_post(); 
 ?>
 	<li>
 		<figure>

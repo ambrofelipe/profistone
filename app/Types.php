@@ -16,6 +16,9 @@ class Types {
 		add_action('init', array($this, 'profistone_create_news_post_type'));
 		add_action('init', array($this, 'profistone_create_feedback_post_type'));
 		add_action('admin_menu', array($this, 'profistone_remove_articles'));
+		add_filter('excerpt_length', array($this, 'profistone_excerpt_length'), 999);
+		add_filter('excerpt_more', array($this, 'profistone_excerpt_more'), 999);
+		add_filter('get_archives_link', array($this, 'profistone_span_archive_news_count'));
 	}
 
 	/**
@@ -125,5 +128,19 @@ class Types {
 	 */
 	public function profistone_remove_articles(){
 		remove_menu_page( 'edit.php' );
+	}
+
+	function profistone_excerpt_length($length) {
+		return 60;
+	}
+
+	function profistone_excerpt_more($more) {
+		return '&hellip;';
+	}
+
+	function profistone_span_archive_news_count($links) {
+		$links = str_replace('(', '<span>', $links);
+		$links = str_replace(')', '</span>', $links);
+		return $links;
 	}
 }

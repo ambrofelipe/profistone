@@ -796,7 +796,7 @@ main .hero__internal h1 {
   position: relative;
   width: 35rem;
   font-weight: 400;
-  font-size: 4em;
+  font-size: clamp(3em, 10vw, 4em);
   color: white;
   line-height: 1.5;
   text-align: center;
@@ -1655,6 +1655,15 @@ footer .bar > .wrapper ul li a {
   z-index: 2;
 }
 
+.services__nav {
+  display: none;
+}
+@media screen and (max-width: 991px) {
+  .services__nav {
+    display: block;
+  }
+}
+
 .news.wrapper nav.prev-next {
   display: block;
   margin: 2rem 0 6rem;
@@ -2297,6 +2306,12 @@ hr.divider__servicos::before {
   left: 5px;
   font-size: clamp(0.7em, 2vw, 0.9em);
 }
+@media screen and (max-width: 991px) {
+  .contact form label[for=terms] {
+    left: 0;
+    top: -3px;
+  }
+}
 .contact form label[for=terms] a {
   color: #4b58a0;
 }
@@ -2308,6 +2323,7 @@ hr.divider__servicos::before {
 @media screen and (max-width: 991px) {
   .contact form input[type=checkbox] {
     margin-left: 0;
+    font-size: 3em;
   }
 }
 .contact form button {

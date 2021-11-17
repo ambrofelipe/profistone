@@ -13,8 +13,9 @@ class Enqueue {
 	 */
 	public function __construct() {
 
-		add_action( 'wp_enqueue_scripts', array( $this, 'styles' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'scripts') );
+		add_action('wp_enqueue_scripts', array($this, 'styles'));
+		add_action('wp_enqueue_scripts', array($this, 'scripts'));
+		add_action('login_enqueue_scripts', array($this, 'profistone_login_logo'));
 
 	}
 
@@ -43,4 +44,17 @@ class Enqueue {
 			);
 	}
 
+	public function profistone_login_logo() { ?>
+		<style type="text/css">
+			#login h1 a, .login h1 a {
+				background-image: url(wp-content/themes/Profistone/assets/img/logo-blue.svg);
+				height: 125px;
+				width: 350px;
+				position: relative;
+				left: -15px;
+				background-size: contain;
+				background-repeat: no-repeat;
+			}
+		</style>
+	<?php }
 }

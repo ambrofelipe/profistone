@@ -81,3 +81,11 @@
 		}
 	}
 }
+
+.services__nav {
+	display: none;
+
+	@include mobile {
+		display: block;
+	}
+}

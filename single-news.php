@@ -65,7 +65,7 @@
 		<?php
 
 			$categories = get_the_category();
-			$category = $categories[0] -> cat_name;
+			$category = $categories[0]->cat_name;
 
 			$date_tag = get_the_date("c");
 			$date_print = get_the_date("j, F | Y");

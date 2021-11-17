@@ -92,6 +92,11 @@
 			left: 5px;
 			font-size: clamp(0.7em, 2vw, 0.9em);
 
+			@include mobile {
+				left: 0;
+				top: -3px;
+			}
+
 			a {
 				color: $M-01;
 			}
@@ -104,6 +109,7 @@
 
 			@include mobile {
 				margin-left: 0;
+				font-size: 3em;
 			}
 		}
 
