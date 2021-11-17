@@ -97,6 +97,10 @@ main .hero {
 				top: -8rem;
 				width: 350px;
 				height: 350px;
+
+				@include mobile {
+					opacity: 0;
+				}
 			}
 		}
 

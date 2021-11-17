@@ -156,6 +156,10 @@
 		mask: url(../img/triangle-right.svg) center/cover no-repeat;
 		transform: rotate(180deg);
 		z-index: 2;
+
+		@include mobile {
+			display: none;
+		}
 	}
 
 	&__clientes::after {

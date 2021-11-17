@@ -7,10 +7,19 @@
 	width: 9rem;
 	height: 100%;
 
+	@include mobile {
+		position: static;
+		margin: 4rem auto 0;
+	}
+
 	div {
 		position: absolute;
 		top: 0;
 		right: 0;
+
+		@include mobile {
+			position: relative;
+		}
 
 		&.widget-sticky {
 			position: sticky;

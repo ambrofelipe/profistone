@@ -52,6 +52,11 @@
 		padding: 2rem;
 		color: $G-04;
 		text-align: justify;
+
+		@include mobile {
+			max-width: 100%;
+			min-height: 40rem;
+		}
 	}
 
 	&__preview {

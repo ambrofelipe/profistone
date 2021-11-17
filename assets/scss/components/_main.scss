@@ -14,9 +14,14 @@ main {
 		max-width: 940px;
 		margin: 2rem auto;
 
+		@include mobile {
+			padding: 0 1rem;
+		}
+
 		p {
 			width: 70%;
 			line-height: 1.5;
+			margin: 0.75rem 0;
 
 			@include mobile {
 				width: 90%;
@@ -74,6 +79,10 @@ main {
 				width: 15rem;
 				height: 15rem;
 				background: url(../img/ico-piggy.svg) center / cover no-repeat;
+
+				@include mobile {
+					opacity: 0.1;
+				}
 			}
 		}
 	}
@@ -81,5 +90,12 @@ main {
 	figure.clientes img {
 		display: block;
 		margin: 3rem auto;
+		object-fit: contain;
+
+		@include mobile {
+			margin: 0 auto;
+			max-width: 90%;
+			height: fit-content;
+		}
 	}
 }

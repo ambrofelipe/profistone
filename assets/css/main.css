@@ -432,7 +432,7 @@ header nav ul.top-nav > li.current-menu-item a::after, header nav ul.top-nav > l
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 2rem;
     background-color: white;
     opacity: 0;
@@ -447,7 +447,8 @@ header nav ul.top-nav > li.current-menu-item a::after, header nav ul.top-nav > l
     flex: 0;
     opacity: 0;
     top: -7vh;
-    left: -36vw;
+    left: -45vw;
+    font-size: 2em;
     -webkit-animation: enter 0.3s ease-out forwards;
     animation: enter 0.3s ease-out forwards;
   }
@@ -474,6 +475,12 @@ header nav ul.top-nav > li.current-menu-item a::after, header nav ul.top-nav > l
   header nav ul.top-nav > li:nth-child(6) {
     -webkit-animation-delay: 0.5s;
     animation-delay: 0.5s;
+  }
+  header nav ul.top-nav > li.menu-item-has-children::after {
+    display: none;
+  }
+  header nav ul.top-nav > li.menu-item-has-children:hover > ul {
+    display: none;
   }
   header nav ul.top-nav > li + li {
     margin-top: 0.75rem;
@@ -565,11 +572,6 @@ ul.top-nav li.menu-item-has-children ul > li > a:hover {
   ul.top-nav li.menu-item-has-children ul > li > a {
     padding: 0.75rem 0.5rem;
     background: #ffebe6;
-    transform: background-color 200ms ease-out;
-  }
-  ul.top-nav li.menu-item-has-children ul > li > a:hover {
-    background-color: white;
-    transform: background-color 200ms ease-out;
   }
 }
 @media screen and (max-width: 991px) {
@@ -577,9 +579,6 @@ ul.top-nav li.menu-item-has-children ul > li > a:hover {
     padding: 0;
     background: #ffebe6;
   }
-}
-ul.top-nav li.menu-item-has-children ul:hover, ul.top-nav li.menu-item-has-children ul > li:hover {
-  display: block;
 }
 
 @-webkit-keyframes enter {
@@ -632,9 +631,15 @@ main article.main-article {
   max-width: 940px;
   margin: 2rem auto;
 }
+@media screen and (max-width: 991px) {
+  main article.main-article {
+    padding: 0 1rem;
+  }
+}
 main article.main-article p {
   width: 70%;
   line-height: 1.5;
+  margin: 0.75rem 0;
 }
 @media screen and (max-width: 991px) {
   main article.main-article p {
@@ -686,9 +691,25 @@ main article.main-article__sobre::before {
   height: 15rem;
   background: url(../img/ico-piggy.svg) center/cover no-repeat;
 }
+@media screen and (max-width: 991px) {
+  main article.main-article__sobre::before {
+    opacity: 0.1;
+  }
+}
 main figure.clientes img {
   display: block;
   margin: 3rem auto;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+@media screen and (max-width: 991px) {
+  main figure.clientes img {
+    margin: 0 auto;
+    max-width: 90%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
 }
 
 main .hero {
@@ -786,6 +807,11 @@ main .hero__internal h1::before {
   top: -8rem;
   width: 350px;
   height: 350px;
+}
+@media screen and (max-width: 991px) {
+  main .hero__internal h1::before {
+    opacity: 0;
+  }
 }
 main .hero__internal::before {
   content: "";
@@ -1024,6 +1050,12 @@ main .benefits ol li:nth-of-type(4)::before {
   padding: 2rem;
   color: #6a7681;
   text-align: justify;
+}
+@media screen and (max-width: 991px) {
+  .news__preview, .news__article {
+    max-width: 100%;
+    min-height: 40rem;
+  }
 }
 .news__preview {
   background: white;
@@ -1302,6 +1334,12 @@ main .benefits ol li:nth-of-type(4)::before {
   -webkit-clip-path: url(#hero-path);
   clip-path: url(#hero-path);
 }
+@media screen and (max-width: 991px) {
+  .hero--contactos + hr {
+    width: 150vw;
+    left: -50vw;
+  }
+}
 
 .map {
   position: relative;
@@ -1351,6 +1389,11 @@ figure.mapa img {
   margin: 3rem 0 6rem;
   font-size: 1.75em;
 }
+@media screen and (max-width: 991px) {
+  .contact + address {
+    margin: 3rem 1rem 6rem;
+  }
+}
 .contact + address ul li {
   margin: 0.5rem 0;
 }
@@ -1374,6 +1417,12 @@ figure.mapa img {
 .contact + address ul li:nth-of-type(3) a {
   margin-top: 3rem;
   background-image: url(../img/ico-pin.svg);
+}
+@media screen and (max-width: 991px) {
+  .contact + address ul li:nth-of-type(3) a {
+    background-size: 33px;
+    background-position: left top;
+  }
 }
 
 .instagram {
@@ -1403,6 +1452,13 @@ footer > .wrapper {
   grid-template-columns: 8fr 2fr 2fr;
   padding-bottom: 2rem;
 }
+@media screen and (max-width: 991px) {
+  footer > .wrapper {
+    grid-template-areas: "lg lg" "p1 p1" "p2 p2" "p3 p3" "p4 p4" "menu address";
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+  }
+}
 footer > .wrapper > a {
   grid-area: lg;
   display: block;
@@ -1411,11 +1467,21 @@ footer > .wrapper > a {
   background: url(../img/logo-white.svg) -10px -20px/cover no-repeat;
   margin-bottom: 0.5rem;
 }
+@media screen and (max-width: 991px) {
+  footer > .wrapper > a {
+    margin: 0 auto 1.5rem;
+  }
+}
 footer > .wrapper p {
   max-width: 75ch;
   font-size: 0.9em;
   line-height: 1.25;
   margin: 0.125rem 0;
+}
+@media screen and (max-width: 991px) {
+  footer > .wrapper p {
+    padding: 0.25rem 1rem;
+  }
 }
 footer > .wrapper p:nth-of-type(1) {
   grid-area: p1;
@@ -1433,6 +1499,11 @@ footer > .wrapper nav {
   grid-area: menu;
   text-transform: uppercase;
 }
+@media screen and (max-width: 991px) {
+  footer > .wrapper nav {
+    margin-top: 1.5rem;
+  }
+}
 footer > .wrapper nav span {
   color: black;
 }
@@ -1448,6 +1519,11 @@ footer > .wrapper nav ul li a {
 }
 footer > .wrapper address {
   grid-area: address;
+}
+@media screen and (max-width: 991px) {
+  footer > .wrapper address {
+    margin-top: 1.5rem;
+  }
 }
 footer > .wrapper address span {
   color: black;
@@ -1476,12 +1552,21 @@ footer .bar > .wrapper {
   justify-content: space-between;
   padding: 1.5rem 0 1.25em;
 }
+@media screen and (max-width: 991px) {
+  footer .bar > .wrapper {
+    flex-direction: column;
+  }
+  footer .bar > .wrapper .copy {
+    margin-bottom: 1.5rem;
+  }
+}
 footer .bar > .wrapper ul li {
   display: inline;
   padding: 0 1rem;
 }
 footer .bar > .wrapper ul li:first-child {
   border-right: 1px solid #f9fafb;
+  padding-left: 0;
 }
 footer .bar > .wrapper ul li:last-child {
   padding-right: 0;
@@ -1671,10 +1756,21 @@ footer .bar > .wrapper ul li a {
   width: 9rem;
   height: 100%;
 }
+@media screen and (max-width: 991px) {
+  .news.wrapper > aside {
+    position: static;
+    margin: 4rem auto 0;
+  }
+}
 .news.wrapper > aside div {
   position: absolute;
   top: 0;
   right: 0;
+}
+@media screen and (max-width: 991px) {
+  .news.wrapper > aside div {
+    position: relative;
+  }
 }
 .news.wrapper > aside div.widget-sticky {
   position: sticky;
@@ -2262,6 +2358,11 @@ hr.divider__servicos::before {
   mask: url(../img/triangle-right.svg) center/cover no-repeat;
   transform: rotate(180deg);
   z-index: 2;
+}
+@media screen and (max-width: 991px) {
+  .contact__clientes::before {
+    display: none;
+  }
 }
 .contact__clientes::after {
   transform: none;

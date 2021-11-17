@@ -36,7 +36,7 @@
 	</svg>
 
 	<div class="hero hero__internal hero--category">
-		<h1><?php echo $category->name ?></h1>
+		<h1><?php echo get_the_archive_title(); ?></h1>
 	</div>
 
 	<!--
@@ -81,12 +81,19 @@
 	-->
 
 	<?php
+		if($category) {
+			$news_args = array(
+				'post_type' => 'news',
+				'cat' => $category->term_id,
+				'posts_per_page' => 3
+			);
+		} else {
+			$news_args = array(
+				'post_type' => 'news',
+				'posts_per_page' => 3
+			);
+		}
 
-		$news_args = array(
-			'post_type' => 'news',
-			'cat' => $category->term_id,
-			'posts_per_page' => 3
-		);
 
 		$the_query = new WP_Query( $news_args ); ?>
 

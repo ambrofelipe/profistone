@@ -14,6 +14,11 @@
 	min-height: 45rem;
 	background: $G-00;
 	clip-path: url(#hero-path);
+
+	@include mobile {
+		width: 150vw;
+		left: -50vw;
+	}
 }
 
 .map {
@@ -64,6 +69,10 @@ figure.mapa {
 	margin: 3rem 0 6rem;
 	font-size: 1.75em;
 
+	@include mobile {
+		margin: 3rem 1rem 6rem;
+	}
+
 	ul li {
 		margin: 0.5rem 0;
 
@@ -90,6 +99,11 @@ figure.mapa {
 		&:nth-of-type(3) a {
 			margin-top: 3rem;
 			background-image: url(../img/ico-pin.svg);
+
+			@include mobile {
+				background-size: 33px;
+				background-position: left top;
+			}
 		}
 	}
 }

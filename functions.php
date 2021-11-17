@@ -63,9 +63,9 @@ add_filter('get_archives_link', 'profistone_span_archive_news_count');
  *
  * For more information and instructions, see: https://b.utler.co/Y3
  */
-add_action( 'phpmailer_init', 'send_smtp_email' );
-function send_smtp_email( $phpmailer ) {
-	if ( ! is_object( $phpmailer ) ) {
+add_action('phpmailer_init', 'send_smtp_email');
+function send_smtp_email($phpmailer) {
+	if (!is_object($phpmailer) ) {
 		$phpmailer = (object) $phpmailer;
 	}
 
@@ -80,7 +80,7 @@ function send_smtp_email( $phpmailer ) {
 	$phpmailer->FromName   = SMTP_NAME;
 }
 
-function log_mailer_errors( $wp_error ){
+function log_mailer_errors($wp_error){
   $fn = ABSPATH . '/wp-content/debug.log';
   $fp = fopen($fn, 'a');
   fputs($fp, "Mailer Error: " . $wp_error->get_error_message() ."\n");
@@ -88,4 +88,12 @@ function log_mailer_errors( $wp_error ){
 }
 add_action('wp_mail_failed', 'log_mailer_errors', 10, 1);
 
+/**
+ * Proper ob_end_flush() for all levels
+ *
+ * This replaces the WordPress `wp_ob_end_flush_all()` function
+ * with a replacement that doesn't cause PHP notices.
+ */
+remove_action('shutdown', 'wp_ob_end_flush_all', 1);
+add_action('shutdown', function() { while (@ob_end_flush()); });
 ?>
