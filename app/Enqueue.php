@@ -47,7 +47,7 @@ class Enqueue {
 	public function profistone_login_logo() { ?>
 		<style type="text/css">
 			#login h1 a, .login h1 a {
-				background-image: url(wp-content/themes/Profistone/assets/img/logo-blue.svg);
+				background-image: url(../wp-content/themes/Profistone/assets/img/logo-blue.svg);
 				height: 125px;
 				width: 350px;
 				position: relative;

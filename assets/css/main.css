@@ -2323,7 +2323,8 @@ hr.divider__servicos::before {
 @media screen and (max-width: 991px) {
   .contact form input[type=checkbox] {
     margin-left: 0;
-    font-size: 3em;
+    font-size: 1rem;
+    padding: 0;
   }
 }
 .contact form button {
