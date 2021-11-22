@@ -16,6 +16,7 @@
 	clip-path: url(#hero-path);
 
 	@include mobile {
+		min-height: 30rem;
 		width: 150vw;
 		left: -50vw;
 	}

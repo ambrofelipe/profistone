@@ -166,7 +166,7 @@ $ = jQuery;
 						data: mail,
 					})
 					.done(function (response) {
-						if (response.success === true) {
+						if (response.success) {
 							thanks.fadeIn();
 							loader.animate({ opacity: 0 }, "fast");
 							$("input, textarea").parent().removeClass();

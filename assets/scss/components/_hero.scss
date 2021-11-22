@@ -8,6 +8,10 @@ main .hero {
 	background-repeat: no-repeat;
 	clip-path: url(#hero-path);
 
+	@include mobile {
+		min-height: 30rem;
+	}
+
 	&__home {
 		position: relative;
 		background-image: url(../img/hero-home.jpg);
@@ -27,6 +31,7 @@ main .hero {
 
 			@include mobile {
 				width: unset;
+				left: -0.5rem;
 			}
 
 			span {

@@ -84,6 +84,10 @@ header {
 			background: url(../img/logo-blue.svg) -15px center / cover no-repeat;
 			opacity: 1;
 			transition: all 200ms ease-out;
+
+			@include mobile {
+				background: url(../img/logo-blue.svg) -10px center / cover no-repeat;
+			}
 		}
 
 		ul.top-nav {
@@ -267,9 +271,9 @@ header {
 				& > li {
 					flex: 0;
 					opacity: 0;
-					top: -7vh;
+					top: -12vh;
 					left: -45vw;
-					font-size: 2em;
+					font-size: 1.5em;
 					animation: enter 0.3s ease-out forwards;
 
 					@for $n from 1 through 6 {
@@ -284,10 +288,6 @@ header {
 
 					&.menu-item-has-children:hover > ul {
 						display: none;
-					}
-
-					& + li {
-						margin-top: 0.75rem;
 					}
 
 					&::after {
