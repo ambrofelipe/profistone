@@ -40,7 +40,7 @@ class Form {
 
 		$response = array('success' => true, 'data' => $data); 
 
-		$to = 'geral@profistone.com';
+		$to = 'wordpress@profistone.com';
 		$subject = '👋 Novo pedido de contacto do site';
 		$headers[] = 'Content-Type: text/html; charset=UTF-8';
 		$headers[] = 'From: ' . $data['name'] . ' <' . $data['email'] . '>';

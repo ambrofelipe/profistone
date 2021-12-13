@@ -19,7 +19,7 @@
 			'menu_class'        => "menu-services",
 			'menu_id'           => "",
 			'container'         => "nav",
-			'container_class'   => "services__nav",
+			'container_class'   => "services__nav services__nav--root",
 			'container_id'      => "",
 			'item_spacing'      => "discard",
 		);

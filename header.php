@@ -11,12 +11,12 @@
         <?php wp_head(); ?>
 
 		<!-- favicon -->
-		<link rel="icon" sizes="any" href="<?php echo site_url(); ?>/wp-content/themes/Profistone/assets/favicon/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="<?php echo site_url(); ?>/wp-content/themes/Profistone/assets/favicon/apple-touch-icon.png" />
-		<link rel="icon" type="image/png" sizes="192x192" href="<?php echo site_url(); ?>/wp-content/themes/Profistone/assets/favicon/icon-192.png" />
-		<link rel="icon" type="image/png" sizes="32x32" href="<?php echo site_url(); ?>/wp-content/themes/Profistone/assets/favicon/icon-32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="<?php echo site_url(); ?>/wp-content/themes/Profistone/assets/favicon/icon-16.png" />
-		<link rel="manifest" href="<?php echo site_url(); ?>/wp-content/themes/Profistone/assets/favicon/site.webmanifest" />
+		<link rel="icon" sizes="any" href="<?php echo site_url(); ?>/wp-content/themes/Profistone/build/favicon/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="<?php echo site_url(); ?>/wp-content/themes/Profistone/build/favicon/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="<?php echo site_url(); ?>/wp-content/themes/Profistone/build/favicon/icon-192.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="<?php echo site_url(); ?>/wp-content/themes/Profistone/build/favicon/icon-32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="<?php echo site_url(); ?>/wp-content/themes/Profistone/build/favicon/icon-16.png" />
+		<link rel="manifest" href="<?php echo site_url(); ?>/wp-content/themes/Profistone/build/favicon/site.webmanifest" />
 		
 		<meta name="theme-color" content="#4B58A1" />
 
@@ -28,7 +28,7 @@
 		<meta property="og:title" content="Profistone - Consigo desde o início." />
 		<meta property="og:type" content="article" />
 		<meta property="og:url" content="<?php echo site_url(); ?>" />
-		<meta property="og:image" content="<?php echo site_url(); ?>/wp-content/themes/Profistone/assets/favicon/icon-192.png" />
+		<meta property="og:image" content="<?php echo site_url(); ?>/wp-content/themes/Profistone/build/favicon/icon-192.png" />
 		<meta
 			property="og:description"
 			content="Estamos no mercado desde 1978, dedicados à prestação de serviços de contabilidade. Consigo desde o início."
@@ -40,7 +40,7 @@
 			name="twitter:description"
 			content="Estamos no mercado desde 1978, dedicados à prestação de serviços de contabilidade. Consigo desde o início."
 		/>
-		<meta name="twitter:image" content="<?php echo site_url(); ?>/wp-content/themes/Profistone/assets/favicon/icon-192.png" />
+		<meta name="twitter:image" content="<?php echo site_url(); ?>/wp-content/themes/Profistone/build/favicon/icon-192.png" />
 
 		<!-- Google Tag Manager -->
 
@@ -56,9 +56,9 @@
 				<ul>
 					<li>
 						<a
-							href="tel:+351213224900"
+							href="tel:+351213224901"
 							title="Liga para nosso número."
-							>+351 213 224 900</a
+							>+351 213 224 901</a
 						>
 					</li>
 					<li>

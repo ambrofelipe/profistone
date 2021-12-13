@@ -1,8 +1,8 @@
 <address>
 	<ul>
 		<li>
-			<a href="tel:+351213224900" title="Liga para nosso número."
-				>+351 213 224 900</a
+			<a href="tel:+351213224901" title="Liga para nosso número."
+				>+351 213 224 901</a
 			>
 		</li>
 		<li>

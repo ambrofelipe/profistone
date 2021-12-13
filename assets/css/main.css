@@ -1311,7 +1311,7 @@ main .benefits ol li:nth-of-type(4)::before {
 }
 .feedback ul li blockquote {
   position: relative;
-  font-size: 0.75em;
+  font-size: 0.8em;
   text-align: center;
   quotes: "“" "”" "‘" "’";
 }
@@ -1333,6 +1333,9 @@ main .benefits ol li:nth-of-type(4)::before {
   width: 0;
   height: 0;
   visibility: hidden;
+}
+.feedback ul li blockquote p {
+  min-height: 5.625rem;
 }
 .feedback ul li cite {
   display: block;
@@ -1688,6 +1691,9 @@ footer .bar > .wrapper ul li a {
   .services__nav {
     display: block;
   }
+}
+.services__nav--root {
+  display: block;
 }
 
 .news.wrapper nav.prev-next {
